@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         LinearLayout lin = new LinearLayout(this);
-        lin.setGravity(Gravity.CENTER_HORIZONTAL);
+        lin.setGravity(Gravity.CENTER);
         setContentView(lin);
         TextView t = new TextView(this);
         t.setText("wtf");
