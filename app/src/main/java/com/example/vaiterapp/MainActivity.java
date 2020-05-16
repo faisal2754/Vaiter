@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         lin.setGravity(Gravity.CENTER_HORIZONTAL);
         setContentView(lin);
         TextView t = new TextView(this);
-        t.setText("wtf lol");
+        t.setText("wtf");
         lin.addView(t);
     }
 }
