@@ -1,80 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+
+    <ScrollView
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
-
-        <ImageView android:src="@drawable/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
-
-        <!--  Name Label -->
-        <android.support.design.widget.TextInputLayout
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_name"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="40dp"
+                app:srcCompat="@drawable/logo"
+                android:layout_gravity="center"
+                />
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="Name" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginBottom="50dp"
+                android:text="Create your new account"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
-        <!-- Email Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="Email" />
-        </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editFirstName"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawableLeft="@drawable/ic_user"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="First Name"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:textColorHint="@color/white_pressed"
+                android:layout_marginBottom="25dp"
+                android:drawableStart="@drawable/ic_user"
+                android:paddingLeft="10dp"/>
 
-        <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/editLastName"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawableLeft="@drawable/ic_user"
+                android:ems="10"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Last Name"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:textColorHint="@color/white_pressed"
+                android:layout_marginBottom="25dp"
+                android:drawableStart="@drawable/ic_user"
+                android:paddingLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawableLeft="@drawable/ic_user"
+                android:ems="10"
+                android:hint="Email"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColorHint="@color/white_pressed"
                 android:inputType="textPassword"
-                android:hint="Password"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_lock"
+                android:paddingLeft="10dp"/>
 
-        <!-- Signup Button -->
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_signup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Create Account"/>
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_edittext"
+                android:drawableLeft="@drawable/ic_lock"
+                android:ems="10"
+                android:hint="Password"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColorHint="@color/white_pressed"
+                android:inputType="textPassword"
+                android:layout_marginBottom="20dp"
+                android:drawableStart="@drawable/ic_lock"
+                android:paddingLeft="10dp"/>
 
-        <TextView android:id="@+id/link_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Already a member? Login"
-            android:gravity="center"
-            android:textSize="16dip"/>
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonstylegradient"
+                android:text="Sign Up"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/textAlreadyMember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? Click here."
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:layout_marginBottom="6dp" />
 
-    </LinearLayout>
-</ScrollView>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/twitter" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    app:srcCompat="@drawable/instagram"
+                    android:layout_marginStart="15dp" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    app:srcCompat="@drawable/facebook"
+                    android:layout_marginStart="15dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
