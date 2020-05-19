@@ -89,7 +89,7 @@
                     android:buttonTint="@color/white"
                     android:layout_marginBottom="40dp"
                     android:shadowColor="@color/white"
-                    android:text="Restaurant staff"
+                    android:text="Staff Member"
                     android:textColor="@color/white" />
 
             </LinearLayout>
