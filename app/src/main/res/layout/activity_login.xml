@@ -75,6 +75,7 @@
                 android:text="Login"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/buttonstylegradient"
                 android:layout_gravity="center"/>
             <TextView
@@ -84,7 +85,7 @@
                 android:text="Don't have an account? Click here."
                 android:layout_gravity="center"
                 android:textColor="#fff"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="120dp" />
 
 
 
