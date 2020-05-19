@@ -23,94 +23,53 @@
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginBottom="50dp"
                 app:srcCompat="@drawable/logo"
                 android:layout_gravity="center"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="70dp"
-                android:text="Login to your account"
+                android:layout_marginBottom="20dp"
+                android:text="Create your personalised account"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_user"
-                android:ems="10"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:hint="Email"
-                android:inputType="textPersonName"
-                android:textSize="16sp"
-                android:textColorHint="@color/white_pressed"
-                android:layout_marginBottom="25dp"
-                android:drawableStart="@drawable/ic_user"
-                android:paddingLeft="10dp"/>
 
-            <EditText
-                android:id="@+id/editText2"
+            <Button
                 android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_lock"
-                android:ems="10"
-                android:hint="Password"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColorHint="@color/white_pressed"
-                android:inputType="textPassword"
+                android:id="@+id/btnCustomer"
+                android:onClick="StaffClick"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
                 android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:paddingLeft="10dp"/>
+                android:background="@drawable/buttonstylegradient"
+                android:layout_gravity="center"/>
 
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_gravity="bottom|center"
-                android:orientation="vertical"
-                android:id="@+id/linearLayoutCheckBox">
-
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:buttonTint="@color/white"
-                    android:layout_marginBottom="40dp"
-                    android:shadowColor="@color/white"
-                    android:text="Staff Member"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
 
 
             <Button
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:id="@+id/btnStaff"
+                android:text="Staff"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 android:background="@drawable/buttonstylegradient"
                 android:layout_gravity="center"/>
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Don't have an account? Click here."
+                android:text="Already have an account? Click here."
                 android:layout_gravity="center"
                 android:textColor="#fff"
-                android:layout_marginBottom="100dp" />
+                android:layout_marginBottom="180dp" />
 
 
 

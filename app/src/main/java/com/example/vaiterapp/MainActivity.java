@@ -21,24 +21,18 @@ public class MainActivity extends AppCompatActivity {
         lin.setGravity(Gravity.CENTER);
         lin.setOrientation(LinearLayout.VERTICAL);
         setContentView(lin);
-        TextView t = new TextView(this);
-        t.setText("Nigga wtf");
-        lin.addView(t);
-        Button b = new Button(this);
-        b.setText("go to login");
-        lin.addView(b);
-        b.setOnClickListener(v -> SendUserToLoginActivity());
+
     }
 
-    /*protected void onStart() {
+    protected void onStart() {
         super.onStart();
-        SendUserToLoginActivity();
-    }*/
+        SendUserToLaunchActivity();
+    }
 
-    private void SendUserToLoginActivity() {
-        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(loginIntent);
+    private void SendUserToLaunchActivity() {
+        Intent launchIntent = new Intent(MainActivity.this, LaunchActivity.class);
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(launchIntent);
         finish();
     }
 }
