@@ -59,10 +59,12 @@ public class SignupActivity extends AppCompatActivity {
         if (pass.isEmpty()){
             ePass.setError("Please enter a password");
             ePass.requestFocus();
+            return;
         }
         if (pass.length() < 6){
             ePass.setError("Password must be 6 or more characters");
             ePass.requestFocus();
+            return;
         }
     }
 

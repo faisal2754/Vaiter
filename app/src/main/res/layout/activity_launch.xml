@@ -41,7 +41,7 @@
             <Button
                 android:layout_width="250dp"
                 android:id="@+id/btnCustomer"
-                
+
                 android:layout_height="wrap_content"
                 android:text="Customer"
                 android:textAllCaps="true"
