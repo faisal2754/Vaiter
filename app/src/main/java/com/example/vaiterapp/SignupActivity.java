@@ -1,9 +1,11 @@
 package com.example.vaiterapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private EditText eFname, eLname, eEmail, ePass, eCpass;
     private Button btnSignup;
+    private TextView txtAM;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,8 +27,17 @@ public class SignupActivity extends AppCompatActivity {
         ePass = findViewById(R.id.cusSPass);
 
         btnSignup = findViewById(R.id.btnCusSignUp);
+        txtAM = findViewById(R.id.textAlreadyMember);
 
         btnSignup.setOnClickListener(v -> signUp());
+        txtAM.setOnClickListener(v -> LoginClick());
+    }
+
+    public void LoginClick(){
+        Intent staffIntent = new Intent(SignupActivity.this, LoginActivity.class);
+        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(staffIntent);
+        finish();
     }
 
     private void signUp() {

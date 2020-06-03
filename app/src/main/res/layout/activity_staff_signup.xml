@@ -10,6 +10,7 @@
     android:orientation="vertical">
 
 
+
     <ScrollView
 
         android:layout_width="match_parent"
@@ -89,10 +90,21 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:paddingLeft="10dp"/>
 
+            <Spinner
+                android:id="@+id/spinnerRestaurant"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+
+                android:background="@drawable/rounded_edittext"
+                android:spinnerMode="dropdown"/>
+
             <EditText
                 android:id="@+id/StaffPass"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_lock"
@@ -176,3 +188,4 @@
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+

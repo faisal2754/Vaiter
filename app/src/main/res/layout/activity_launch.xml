@@ -63,7 +63,7 @@
                 android:background="@drawable/buttonstylegradient"
                 android:layout_gravity="center"/>
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewAM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account? Click here."

@@ -59,6 +59,7 @@
                 android:id="@+id/editText2"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_lock"
                 android:ems="10"
@@ -106,7 +107,7 @@
                 android:background="@drawable/buttonstylegradient"
                 android:layout_gravity="center"/>
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewNoAcc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account? Click here."
