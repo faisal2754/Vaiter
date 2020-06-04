@@ -2,6 +2,7 @@ package com.example.vaiterapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -25,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
         eLname = findViewById(R.id.cusSLname);
         eEmail = findViewById(R.id.cusSEmail);
         ePass = findViewById(R.id.cusSPass);
+        eCpass = findViewById(R.id.cusSPassC);
 
         btnSignup = findViewById(R.id.btnCusSignUp);
         txtAM = findViewById(R.id.textAlreadyMember);
@@ -47,6 +56,7 @@ public class SignupActivity extends AppCompatActivity {
         String lname = eLname.getText().toString().trim();
         String email = eEmail.getText().toString().trim();
         String pass = ePass.getText().toString().trim();
+        String cpass = eCpass.getText().toString().trim();
 
         if (fname.isEmpty()){
             eFname.setError("Please enter a first name");
@@ -78,6 +88,40 @@ public class SignupActivity extends AppCompatActivity {
             ePass.requestFocus();
             return;
         }
+        if (cpass.isEmpty()){
+            ePass.setError("Please enter your password again");
+            ePass.requestFocus();
+            return;
+        }
+        if (!cpass.equals(pass)){
+            eCpass.setError("Passwords must match");
+            eCpass.requestFocus();
+            return;
+        }
+
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getAPI()
+                .createCustomer(fname, lname, email, pass);
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String s = response.body().string();
+                    Toast.makeText(SignupActivity.this, s, Toast.LENGTH_LONG).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("myTag", t.getMessage());
+            }
+        });
     }
 
 
