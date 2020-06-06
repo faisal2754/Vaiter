@@ -49,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
         finish();
     }
 
-    public void SignupIntent(){
+    public void signUpIntent(){
         Intent signupIntent = new Intent(SignupActivity.this, MainCustomerActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signupIntent);
@@ -117,8 +117,8 @@ public class SignupActivity extends AppCompatActivity {
                 try {
                     String s = response.body().string();
                     Toast.makeText(SignupActivity.this, s, Toast.LENGTH_LONG).show();
-                    SignupIntent();
-                } catch (IOException e) {
+                    signUpIntent();
+                } catch(IOException e) {
                     e.printStackTrace();
                 }
 
