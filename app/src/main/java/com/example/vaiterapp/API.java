@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 public interface API {
 
     @FormUrlEncoded
-    @POST("test.php")
+    @POST("registration.php")
     Call<ResponseBody> createCustomer(
             @Field("FirstName") String fname,
             @Field("LastName")  String lname,

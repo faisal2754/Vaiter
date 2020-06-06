@@ -19,7 +19,7 @@ public class StaffSignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_staff_signup);
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
         Spinner staticSpinner = (Spinner) findViewById(R.id.spinnerRestaurant);
-        
+
 
 
 
