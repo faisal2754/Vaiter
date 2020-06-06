@@ -49,13 +49,6 @@ public class SignupActivity extends AppCompatActivity {
         finish();
     }
 
-    public void Signup(){
-        Intent signupIntent = new Intent(SignupActivity.this, MainCustomerActivity.class);
-        signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(signupIntent);
-        finish();
-    }
-
     private void signUp() {
         /*Toast toast = Toast.makeText(this, fname, Toast.LENGTH_LONG);
         toast.show();*/
@@ -117,7 +110,6 @@ public class SignupActivity extends AppCompatActivity {
                 try {
                     String s = response.body().string();
                     Toast.makeText(SignupActivity.this, s, Toast.LENGTH_LONG).show();
-                    Signup();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -131,5 +123,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
