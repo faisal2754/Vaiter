@@ -38,7 +38,7 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/LEmail"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:background="@drawable/rounded_edittext"
@@ -56,7 +56,7 @@
                 android:paddingLeft="10dp"/>
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/LPass"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:textColor="@color/white"
@@ -82,7 +82,7 @@
                 android:id="@+id/linearLayoutCheckBox">
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/LStaff"
                     style="@style/Widget.AppCompat.CompoundButton.CheckBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,14 +98,15 @@
 
 
             <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:text="Login"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/buttonstylegradient"
-                android:layout_gravity="center"/>
+                android:text="Login"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/textViewNoAcc"
                 android:layout_width="wrap_content"

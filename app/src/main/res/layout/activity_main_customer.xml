@@ -5,12 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/blackblue"
-    tools:context="com.example.vaiterapp.MainCustomerActivity">
-
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context="com.example.vaiterapp.MainCustomerActivity"/>
