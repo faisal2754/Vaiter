@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SendUserToLaunchActivity() {
-        Intent launchIntent = new Intent(MainActivity.this, CustomerMainActivity.class);
+        Intent launchIntent = new Intent(MainActivity.this, LaunchActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(launchIntent);
         finish();

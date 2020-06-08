@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goToCustomerActivity(){
-        Intent signupIntent = new Intent(LoginActivity.this, MainCustomerActivity.class);
+        Intent signupIntent = new Intent(LoginActivity.this, CustomerMainActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(signupIntent);
         finish();

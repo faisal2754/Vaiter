@@ -53,7 +53,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void goToCustomerActivity(){
-        Intent signupIntent = new Intent(SignupActivity.this, MainCustomerActivity.class);
+        Intent signupIntent = new Intent(SignupActivity.this, CustomerMainActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signupIntent);
         finish();

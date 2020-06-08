@@ -11,7 +11,6 @@
             android:name=".CustomerMainActivity"
             android:label="@string/title_activity_customer_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".MainCustomerActivity" />
         <activity android:name=".StaffSignupActivity" />
         <activity android:name=".LaunchActivity" />
         <activity
