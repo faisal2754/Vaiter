@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import okhttp3.ResponseBody;
@@ -49,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
         finish();
     }
 
-    public void signUpIntent(){
+    public void goToCustomerActivity(){
         Intent signupIntent = new Intent(SignupActivity.this, MainCustomerActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signupIntent);
@@ -81,7 +84,7 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            eEmail.setError("Please enter a valid email");
+            eEmail.setError("Please enter a valid email address");
             eEmail.requestFocus();
             return;
         }
@@ -96,7 +99,7 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
         if (cpass.isEmpty()){
-            ePass.setError("Please enter your password again");
+            ePass.setError("Please verify your password");
             ePass.requestFocus();
             return;
         }
@@ -115,13 +118,16 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    assert response.body() != null;
                     String s = response.body().string();
-                    Toast.makeText(SignupActivity.this, s, Toast.LENGTH_LONG).show();
-                    signUpIntent();
-                } catch(IOException e) {
+                    JSONObject js = new JSONObject(s);
+                    if (!js.getBoolean("error")){
+                        goToCustomerActivity();
+                    }
+                    Toast.makeText(SignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
