@@ -19,17 +19,11 @@ public class StaffSignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_staff_signup);
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
         Spinner staticSpinner = (Spinner) findViewById(R.id.spinnerRestaurant);
-
-
-
-
         txtAlreadyM.setOnClickListener(v -> LoginClick());
     }
 
     public void LoginClick(){
         Intent staffIntent = new Intent(StaffSignupActivity.this, LoginActivity.class);
-        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(staffIntent);
-        finish();
     }
 }

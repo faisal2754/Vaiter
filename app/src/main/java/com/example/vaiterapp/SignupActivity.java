@@ -47,9 +47,8 @@ public class SignupActivity extends AppCompatActivity {
 
     public void LoginClick(){
         Intent staffIntent = new Intent(SignupActivity.this, LoginActivity.class);
-        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(staffIntent);
-        finish();
+
     }
 
     public void goToCustomerActivity(){

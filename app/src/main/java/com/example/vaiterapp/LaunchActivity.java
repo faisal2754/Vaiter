@@ -29,23 +29,22 @@ public class LaunchActivity extends AppCompatActivity {
 
     public void StaffClick(){
         Intent staffIntent = new Intent(LaunchActivity.this, StaffSignupActivity.class);
-        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(staffIntent);
-        finish();
+
     }
 
     public void LoginClick(){
         Intent staffIntent = new Intent(LaunchActivity.this, LoginActivity.class);
-        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(staffIntent);
-        finish();
+
     }
 
     public void CustomerClick(){
         Intent customerIntent = new Intent(LaunchActivity.this, SignupActivity.class);
-        customerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(customerIntent);
-        finish();
+
     }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.vaiterapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -24,11 +25,14 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtLaunch;
     private EditText eEmail, ePass;
     private Button btnLogin;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         txtLaunch = findViewById(R.id.textViewNoAcc);
         txtLaunch.setOnClickListener(v -> SignupClick());
@@ -41,9 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void SignupClick(){
         Intent staffIntent = new Intent(LoginActivity.this, LaunchActivity.class);
-        staffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(staffIntent);
-        finish();
+
     }
 
     public void goToCustomerActivity(){
@@ -100,4 +103,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
