@@ -7,14 +7,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences prf1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +31,23 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
 
+        //SendUserToLaunchActivity();
 
-        if(isLoggedIn != null){
+        prf1 = getSharedPreferences("user_details",MODE_PRIVATE);
+        String email = prf1.getString("email", "");
 
-            SendUserToMainActivity();
+        if(email.equalsIgnoreCase("")){
+
+            SendUserToLaunchActivity();
         }
         else{
-            SendUserToLaunchActivity();
+            SendUserToMainActivity();
         }
 
     }
+
+
 
     private void SendUserToLaunchActivity() {
         Intent launchIntent = new Intent(MainActivity.this, LaunchActivity.class);

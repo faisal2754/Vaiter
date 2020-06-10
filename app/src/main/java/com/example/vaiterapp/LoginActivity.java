@@ -1,5 +1,6 @@
 package com.example.vaiterapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,11 +27,12 @@ import android.content.SharedPreferences;
 public class LoginActivity extends AppCompatActivity {
 
     private TextView txtLaunch;
+    private ProgressDialog loadingBar;
     private EditText eEmail, ePass;
     private Button btnLogin;
-    public SharedPreferences sp;
-    public static final String MyPREFERENCES = "MyPrefs";
-    public boolean isLoggedIn;
+
+    SharedPreferences pref;
+
 
 
     @Override
@@ -38,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        
+        //isLoggedIn = false;
+
 
         txtLaunch = findViewById(R.id.textViewNoAcc);
         txtLaunch.setOnClickListener(v -> SignupClick());
@@ -46,9 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         eEmail = findViewById(R.id.LEmail);
         ePass = findViewById(R.id.LPass);
 
-        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String email = eEmail.getText().toString();
-        String pass = ePass.getText().toString();
 
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(v -> login());
@@ -84,9 +84,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
-        sp = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         String email = eEmail.getText().toString();
         String pass = ePass.getText().toString();
+
+        pref = getSharedPreferences("user_details",MODE_PRIVATE);
+
 
         if (email.isEmpty()){
             eEmail.setError("Please enter your email address");
@@ -119,16 +122,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
                 if (!loginResponse.isError()){
-
+//                    loadingBar.setTitle("Signing into account");
+//                    loadingBar.setMessage("Please wait, while we are signing into your account.");
+//                    loadingBar.setCanceledOnTouchOutside(true);
+//                    loadingBar.show();
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
-                    String e  = eEmail.getText().toString();
-                    String p  = ePass.getText().toString();
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString(email, e);
-                    editor.putString(pass, p);
 
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("email",email);
+                    editor.putString("password",pass);
                     editor.commit();
+
                     goToCustomerActivity();
+
 
                 } else {
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();

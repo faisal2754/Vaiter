@@ -26,6 +26,9 @@ public class CustomerMainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
+    SharedPreferences prf;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,9 +98,10 @@ public class CustomerMainActivity extends AppCompatActivity {
     }
 
     public void logout(){
-        SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
+        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prf.edit();
         editor.clear();
         editor.commit();
+        SendUserToLaunchActivity();
     }
 }
