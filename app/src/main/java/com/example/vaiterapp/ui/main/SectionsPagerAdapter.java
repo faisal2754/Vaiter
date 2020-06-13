@@ -51,11 +51,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Tab1";
+                return "New Order";
             case 1:
-                return "Tab2";
+                return "Current Order";
             case 2:
-                return "Tab3";
+                return "Order History";
 
         }
         return null;

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //isLoggedIn = false;
 
+        loadingBar = new ProgressDialog(this);
 
         txtLaunch = findViewById(R.id.textViewNoAcc);
         txtLaunch.setOnClickListener(v -> SignupClick());
@@ -84,6 +87,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
+        loadingBar.setTitle("Signing into account");
+        loadingBar.setMessage("Please wait, while we are signing into your account.");
+        loadingBar.setCanceledOnTouchOutside(true);
+        loadingBar.show();
 
         String email = eEmail.getText().toString();
         String pass = ePass.getText().toString();
@@ -122,11 +129,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
                 if (!loginResponse.isError()){
-//                    loadingBar.setTitle("Signing into account");
-//                    loadingBar.setMessage("Please wait, while we are signing into your account.");
-//                    loadingBar.setCanceledOnTouchOutside(true);
-//                    loadingBar.show();
+
+
+
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+
 
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("email",email);
