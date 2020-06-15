@@ -69,6 +69,7 @@ public class CustomerSignupActivity extends AppCompatActivity {
         String pass = ePass.getText().toString().trim();
         String cpass = eCpass.getText().toString().trim();
 
+
         if (fname.isEmpty()){
             eFname.setError("Please enter a first name");
             eFname.requestFocus();

@@ -25,10 +25,10 @@ public class StaffSignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_signup);
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
-        Spinner staticSpinner = (Spinner) findViewById(R.id.spinnerRestaurant);
+
         txtAlreadyM.setOnClickListener(v -> LoginClick());
 
-        final Spinner spinner = (Spinner) findViewById(R.id.spinnerRestaurant);
+        final Spinner sRes = (Spinner) findViewById(R.id.staffRes);
 
         // Initializing a String Array
         String[] plants = new String[]{
@@ -67,9 +67,9 @@ public class StaffSignupActivity extends AppCompatActivity {
             }
         };
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-        spinner.setAdapter(spinnerArrayAdapter);
+        sRes.setAdapter(spinnerArrayAdapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        sRes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);

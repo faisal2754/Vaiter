@@ -93,7 +93,7 @@
                 android:paddingLeft="10dp"/>
 
             <Spinner
-                android:id="@+id/spinnerRestaurant"
+                android:id="@+id/staffRes"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
 
