@@ -25,6 +25,7 @@ public class StaffSignupActivity extends AppCompatActivity {
         txtAlreadyM.setOnClickListener(v -> LoginClick());
 
         List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("Select your restaurant");
         spinnerArray.add("McDonalds");
         spinnerArray.add("Ocean Basket");
 
@@ -35,6 +36,11 @@ public class StaffSignupActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.spinnerRestaurant);
         sItems.setAdapter(adapter);
+
+//        String selected = sItems.getSelectedItem().toString();
+//            if (selected.equals("what ever the option was")) {
+//        }
+
     }
 
     public void LoginClick(){
