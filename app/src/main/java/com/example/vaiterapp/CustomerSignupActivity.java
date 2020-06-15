@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.vaiterapp.API.RetrofitClient;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignupActivity extends AppCompatActivity {
+public class CustomerSignupActivity extends AppCompatActivity {
 
     private EditText eFname, eLname, eEmail, ePass, eCpass;
     private Button btnSignup;
@@ -30,7 +32,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_customer_signup);
 
         eFname = findViewById(R.id.cusSFname);
         eLname = findViewById(R.id.cusSLname);
@@ -46,13 +48,13 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void LoginClick(){
-        Intent staffIntent = new Intent(SignupActivity.this, LoginActivity.class);
+        Intent staffIntent = new Intent(CustomerSignupActivity.this, LoginActivity.class);
         startActivity(staffIntent);
 
     }
 
     public void goToCustomerActivity(){
-        Intent signupIntent = new Intent(SignupActivity.this, CustomerMainActivity.class);
+        Intent signupIntent = new Intent(CustomerSignupActivity.this, CustomerMainActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signupIntent);
         finish();
@@ -123,7 +125,7 @@ public class SignupActivity extends AppCompatActivity {
                     if (!js.getBoolean("error")){
                         goToCustomerActivity();
                     }
-                    Toast.makeText(SignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
@@ -131,7 +133,7 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(SignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(CustomerSignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d("myTag", t.getMessage());
             }
         });

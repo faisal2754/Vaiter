@@ -1,4 +1,6 @@
-package com.example.vaiterapp;
+package com.example.vaiterapp.API;
+
+import com.example.vaiterapp.User;
 
 public class LoginResponse {
 

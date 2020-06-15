@@ -26,6 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import android.content.SharedPreferences;
 
+import com.example.vaiterapp.API.LoginResponse;
+import com.example.vaiterapp.API.RetrofitClient;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView txtLaunch;

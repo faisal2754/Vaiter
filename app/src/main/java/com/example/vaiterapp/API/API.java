@@ -1,4 +1,4 @@
-package com.example.vaiterapp;
+package com.example.vaiterapp.API;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -20,6 +20,13 @@ public interface API {
     @FormUrlEncoded
     @POST("customerLogin.php")
     Call<LoginResponse> userLogin(
+            @Field("Email") String email,
+            @Field("Password")  String pass
+    );
+
+    @FormUrlEncoded
+    @POST("staffLogin.php")
+    Call<LoginResponse> staffLogin(
             @Field("Email") String email,
             @Field("Password")  String pass
     );

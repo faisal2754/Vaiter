@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -46,7 +45,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void CustomerClick(){
-        Intent customerIntent = new Intent(LaunchActivity.this, SignupActivity.class);
+        Intent customerIntent = new Intent(LaunchActivity.this, CustomerSignupActivity.class);
         startActivity(customerIntent);
 
     }

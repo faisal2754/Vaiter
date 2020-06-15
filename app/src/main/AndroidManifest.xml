@@ -14,7 +14,7 @@
         <activity android:name=".StaffSignupActivity" />
         <activity android:name=".LaunchActivity" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".CustomerSignupActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".MainActivity"
