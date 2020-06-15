@@ -16,7 +16,7 @@ public class User {
         Email = email;
         RestaurantName = restaurantName;
     }
-        //wtf
+
     public String getFirstName() {
         return FirstName;
     }

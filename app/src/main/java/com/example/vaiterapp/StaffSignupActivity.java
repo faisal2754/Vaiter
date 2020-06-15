@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StaffSignupActivity extends AppCompatActivity {
     public TextView txtAlreadyM;
     @Override
@@ -20,6 +23,18 @@ public class StaffSignupActivity extends AppCompatActivity {
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
         Spinner staticSpinner = (Spinner) findViewById(R.id.spinnerRestaurant);
         txtAlreadyM.setOnClickListener(v -> LoginClick());
+
+        List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("McDonalds");
+        spinnerArray.add("Ocean Basket");
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner sItems = (Spinner) findViewById(R.id.spinnerRestaurant);
+        sItems.setAdapter(adapter);
     }
 
     public void LoginClick(){
