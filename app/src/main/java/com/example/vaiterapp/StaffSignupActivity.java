@@ -35,6 +35,7 @@ public class StaffSignupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //wtf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_signup);
 
