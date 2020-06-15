@@ -10,6 +10,7 @@ import android.os.SystemClock;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private EditText eEmail, ePass;
     private Button btnLogin;
+    private CheckBox cStaff;
 
     SharedPreferences pref;
 
@@ -46,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //isLoggedIn = false;
+
+        cStaff = findViewById(R.id.LStaff);
 
         loadingBar = new ProgressDialog(this);
 
@@ -122,10 +126,20 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        Call<LoginResponse> call = RetrofitClient
-                .getInstance()
-                .getAPI()
-                .userLogin(email, pass);
+        Call<LoginResponse> call;
+
+        if (cStaff.isChecked()){
+            call = RetrofitClient
+                    .getInstance()
+                    .getAPI()
+                    .staffLogin(email,pass);
+        } else {
+            call = RetrofitClient
+                    .getInstance()
+                    .getAPI()
+                    .customerLogin(email,pass);
+        }
+
 
         call.enqueue(new Callback<LoginResponse>() {
             @Override
