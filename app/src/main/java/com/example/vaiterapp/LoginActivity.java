@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
                 if (!loginResponse.isError()){
-
+                    loadingBar.dismiss();
 
 
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
@@ -147,11 +147,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } else {
+                    loadingBar.dismiss();
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
+                loadingBar.dismiss();
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
