@@ -29,10 +29,7 @@ public class StaffSignupActivity extends AppCompatActivity {
         spinnerArray.add("McDonalds");
         spinnerArray.add("Ocean Basket");
 
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner sItems = (Spinner) findViewById(R.id.spinnerRestaurant);
         sItems.setAdapter(adapter);
