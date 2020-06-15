@@ -40,7 +40,7 @@
                 android:textStyle="bold"/>
 
             <EditText
-                android:id="@+id/StaffFname"
+                android:id="@+id/staffSFname"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:textColor="@color/white"
@@ -58,7 +58,7 @@
                 android:paddingLeft="10dp"/>
 
             <EditText
-                android:id="@+id/StaffLname"
+                android:id="@+id/staffSLname"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:textColor="@color/white"
@@ -76,7 +76,7 @@
                 android:paddingLeft="10dp"/>
 
             <EditText
-                android:id="@+id/StaffEmail"
+                android:id="@+id/staffSEmail"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:textColor="@color/white"
@@ -104,7 +104,7 @@
                 android:spinnerMode="dropdown"/>
 
             <EditText
-                android:id="@+id/StaffPass"
+                android:id="@+id/staffSPass"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
@@ -121,7 +121,7 @@
                 android:drawableStart="@drawable/ic_lock"
                 android:paddingLeft="10dp"/>
             <EditText
-                android:id="@+id/StaffPassConfirm"
+                android:id="@+id/staffSPassC"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:textColor="@color/white"

@@ -30,4 +30,14 @@ public interface API {
             @Field("Email") String email,
             @Field("Password")  String pass
     );
+
+    @FormUrlEncoded
+    @POST("staffRegistration.php")
+    Call<ResponseBody> createStaff(
+            @Field("FirstName") String fname,
+            @Field("LastName")  String lname,
+            @Field("Email") String email,
+            @Field("RestaurantName") String rname,
+            @Field("Password")  String pass
+    );
 }
