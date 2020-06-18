@@ -19,7 +19,7 @@ public interface API {
 
     @FormUrlEncoded
     @POST("customerLogin.php")
-    Call<LoginResponse> userLogin(
+    Call<LoginResponse> customerLogin(
             @Field("Email") String email,
             @Field("Password")  String pass
     );
