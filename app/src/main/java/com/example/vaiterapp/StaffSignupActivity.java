@@ -75,8 +75,8 @@ public class StaffSignupActivity extends AppCompatActivity {
         startActivity(staffIntent);
     }
 
-    public void goToCustomerActivity(){
-        Intent signupIntent = new Intent(StaffSignupActivity.this, CustomerMainActivity.class);
+    public void goToStaffActivity(){
+        Intent signupIntent = new Intent(StaffSignupActivity.this, StaffMainActivity.class);
         signupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(signupIntent);
         finish();
@@ -144,7 +144,7 @@ public class StaffSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
-                        goToCustomerActivity();
+                        goToStaffActivity();
                     }
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
