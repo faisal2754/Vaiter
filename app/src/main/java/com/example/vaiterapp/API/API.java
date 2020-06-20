@@ -40,4 +40,10 @@ public interface API {
             @Field("RestaurantName") String rname,
             @Field("Password")  String pass
     );
+
+    @FormUrlEncoded
+    @POST("Meals.php")
+    Call<ResponseBody> getMeals(
+            @Field("RestaurantName") String fname
+    );
 }
