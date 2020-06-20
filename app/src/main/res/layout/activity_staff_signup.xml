@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/gradient"
 
     tools:context=".MainActivity"
     android:orientation="vertical">
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:text="Create your new staff account"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -43,7 +43,7 @@
                 android:id="@+id/staffSFname"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_user"
                 android:ems="10"
@@ -61,7 +61,7 @@
                 android:id="@+id/staffSLname"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_user"
                 android:ems="10"
@@ -79,7 +79,7 @@
                 android:id="@+id/staffSEmail"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_user"
                 android:ems="10"
@@ -108,7 +108,7 @@
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_lock"
                 android:ems="10"
@@ -124,7 +124,7 @@
                 android:id="@+id/staffSPassC"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:background="@drawable/rounded_edittext"
                 android:drawableLeft="@drawable/ic_lock"
                 android:ems="10"
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text="Already have an account? Click here."
                 android:layout_gravity="center"
-                android:textColor="#000000"
+                android:textColor="#fff"
                 android:layout_marginBottom="30dp" />
 
 

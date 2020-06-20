@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
+    android:background="@drawable/blackblue"
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.CustomerMainActivity">
 
@@ -36,12 +36,13 @@
 
 
         <com.google.android.material.tabs.TabLayout
+
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            app:tabTextColor="@color/colorPrimaryDark"
-            android:background="?attr/colorPrimary" />
+            app:tabTextColor="@color/white"
+            android:background="#000080" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
