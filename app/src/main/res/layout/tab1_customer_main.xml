@@ -6,15 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
 
-    <ListView
-        android:id="@+id/list_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-         />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="696dp"
+
+                tools:ignore="NestedScrolling">
+
+            </ListView>
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btnOrder"
+        android:visibility="gone"
         android:layout_width="179dp"
         android:layout_height="66dp"
         android:layout_alignParentTop="true"
