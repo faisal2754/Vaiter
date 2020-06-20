@@ -17,17 +17,18 @@
             <ListView
                 android:id="@+id/list_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="725dp"
                 android:visibility="gone"
 
                 />
 
             <Button
                 android:id="@+id/btnOrder"
-                android:layout_width="179dp"
-                android:layout_height="66dp"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:background="@drawable/buttonstylegradient"
                 android:layout_gravity="center"
                 android:layout_marginTop="189dp"
                 android:layout_weight="1"
