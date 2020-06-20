@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
-    <ScrollView
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,7 +32,7 @@
                 android:text="Create an order"
                 android:textSize="18sp" />
         </LinearLayout>
-    </ScrollView>
+
 
 
 </RelativeLayout>
