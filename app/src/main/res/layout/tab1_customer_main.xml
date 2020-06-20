@@ -9,7 +9,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:text="Create an order"
                 android:textSize="18sp" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 
