@@ -5,24 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
+    <ScrollView
 
-    <ListView
-        android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-         />
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnOrder"
-        android:layout_width="179dp"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="189dp"
-        android:layout_weight="1"
-        android:text="Create an order"
-        android:textSize="18sp" />
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                
+                />
+
+            <Button
+                android:id="@+id/btnOrder"
+                android:layout_width="179dp"
+                android:layout_height="66dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="189dp"
+                android:layout_weight="1"
+                android:text="Create an order"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </ScrollView>
+
 
 </RelativeLayout>
