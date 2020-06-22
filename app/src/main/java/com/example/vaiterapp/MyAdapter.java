@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaiterapp.API.RetrofitClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -41,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             main.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
                     if (getPosition() == 0){
 
                         Tab1.getMeals("Ocean Basket");
@@ -52,10 +56,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 }
             });
         }
+        void getMeals(String rname){
+            Call<ResponseBody> call = RetrofitClient
+                    .getInstance()
+                    .getAPI()
+                    .getMeals(rname);
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    try {
+                        String s = response.body().string();
+                        JSONObject js = new JSONObject(s);
+                        if (!js.getBoolean("error")){
+                            JSONArray jArr = js.getJSONArray("message");
+                            for(int i=0;i<jArr.length();i++){
+                                String curr = jArr.getString(i);
+                                //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
+                                //listItems.add(curr);
+                            }
+                        }
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(itemView.getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
     public MyAdapter(List<Item>itemList){
         this.itemList=itemList;
     }
+
+
+
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);

@@ -5,11 +5,13 @@ public class Item {
     private int imageId;
     private String title;
     private String subtitle;
+
     public Item(Integer imageId,String title,String subtitle){
         this.imageId=imageId;
         this.title =title;
         this.subtitle=subtitle;
     }
+
     public int getImageId(){return imageId;}
     public void setImageId(int imageId){
         this.imageId=imageId;

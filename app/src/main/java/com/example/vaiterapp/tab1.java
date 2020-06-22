@@ -44,21 +44,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class tab1 extends Fragment implements View.OnClickListener{
-    private List<Item> itemList = new ArrayList<>();
 
+    private List<Item> itemList = new ArrayList<>();
     private View Tab1View;
-    private ListView list_view;
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> listItems;
+    //private ListView list_view;
+/*    private ArrayAdapter<String> adapter;
+    private ArrayList<String> listItems;*/
     private Button btnOrder;
 
     private RecyclerView recyclerview;
     private MyAdapter mAdapter;
 
-
-
-
-    @Override
+    /*@Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         OnBackPressedCallback callback = new OnBackPressedCallback(
@@ -74,7 +71,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         requireActivity().getOnBackPressedDispatcher().addCallback(
                 this, // LifecycleOwner
                 callback);
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,10 +90,12 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
         itemList.clear();
         Item item = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
+        Item item1 = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
         itemList.add(item);
+        itemList.add(item1);
 
 
-        list_view = rootView.findViewById(R.id.list_view);
+        /*list_view = rootView.findViewById(R.id.list_view);
 
         list_view.setBackgroundResource(R.drawable.customshape);
         listItems = new ArrayList<String>();
@@ -120,11 +119,10 @@ public class tab1 extends Fragment implements View.OnClickListener{
             }
         };
 
-
         list_view.setAdapter(adapter);
 
         listItems.add("Ocean Basket");
-        listItems.add("McDonalds");
+        listItems.add("McDonalds");*/
 
         /*btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,23 +134,23 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
         btnOrder.setOnClickListener(this);
 
-        list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        /*list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
             //Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
             getMeals(selectedItem);
-            });
+            });*/
 
 
         return rootView;
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnOrder) {
             list_view.setVisibility(View.VISIBLE);
             btnOrder.setVisibility(View.GONE);
         }
-    }
+    }*/
 
     void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
@@ -164,7 +162,15 @@ public class tab1 extends Fragment implements View.OnClickListener{
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String s = response.body().string();
-                    jsonDecode(s);
+                    JSONObject js = new JSONObject(s);
+                    if (!js.getBoolean("error")){
+                        JSONArray jArr = js.getJSONArray("message");
+                        for(int i=0;i<jArr.length();i++){
+                            String curr = jArr.getString(i);
+                            //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
+
+                        }
+                    }
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
@@ -176,7 +182,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         });
     }
 
-    private void jsonDecode(String s) throws JSONException {
+/*    private void jsonDecode(String s) throws JSONException {
         JSONObject js = new JSONObject(s);
         if (!js.getBoolean("error")){
             JSONArray jArr = js.getJSONArray("message");
@@ -186,14 +192,14 @@ public class tab1 extends Fragment implements View.OnClickListener{
                 addMenuItem(curr);
             }
         }
-    }
+    }*/
 
-    private void addMenuItem(String item){
+/*    private void addMenuItem(String item){
         adapter.clear();
         //listItems.clear();
         listItems.add(item);
         adapter.notifyDataSetChanged();
-    }
+    }*/
 
     //@Override
     public void onBackPressed()
@@ -203,5 +209,8 @@ public class tab1 extends Fragment implements View.OnClickListener{
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }
