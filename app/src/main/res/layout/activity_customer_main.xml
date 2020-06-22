@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             app:tabTextColor="@color/white"
-            android:background="#000080" />
+            android:background="#003366" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

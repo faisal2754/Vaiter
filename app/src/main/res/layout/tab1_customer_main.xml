@@ -9,7 +9,6 @@
 
     <Button
         android:id="@+id/btnOrder"
-        android:visibility="gone"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
@@ -19,7 +18,8 @@
         android:layout_weight="1"
         android:background="@drawable/buttonstylegradient"
         android:text="Create an order"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="gone"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

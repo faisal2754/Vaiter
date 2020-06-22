@@ -89,10 +89,10 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setAdapter(mAdapter);
 
         itemList.clear();
-        Item item = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
-        Item item1 = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
-        itemList.add(item);
-        itemList.add(item1);
+        Item OB = new Item(R.drawable.ob,"Ocean Basket","Fancy Fish restaurant");
+        Item McD = new Item(R.drawable.mcdonalds2,"McDonalds","Burgers");
+        itemList.add(OB);
+        itemList.add(McD);
 
 
         /*list_view = rootView.findViewById(R.id.list_view);
