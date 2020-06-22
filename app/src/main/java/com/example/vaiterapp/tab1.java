@@ -1,4 +1,6 @@
 package com.example.vaiterapp;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -22,6 +25,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaiterapp.API.RetrofitClient;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +59,24 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        OnBackPressedCallback callback = new OnBackPressedCallback(
+                true // default to enabled
+        ) {
+            @Override
+            public void handleOnBackPressed() {
+                list_view.setVisibility(View.GONE);
+                btnOrder.setVisibility(View.VISIBLE);
+                Toast.makeText(getActivity(), "wtf lol", Toast.LENGTH_LONG).show();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(
+                this, // LifecycleOwner
+                callback);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab1_customer_main, container, false);
         /*TextView tv = (TextView) rootView.findViewById(R.id.section_label);
@@ -67,13 +92,9 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setAdapter(mAdapter);
 
         itemList.clear();
-        Item OB = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
-        itemList.add(OB);
+        Item item = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
+        itemList.add(item);
 
-        Item McD = new Item(R.drawable.blackblue,"McDonalds","Burgers boi");
-        itemList.add(McD);
-        itemList.add(McD);
-        itemList.add(McD);
 
         list_view = rootView.findViewById(R.id.list_view);
 
@@ -115,13 +136,12 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
         btnOrder.setOnClickListener(this);
 
-
-
         list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
             //Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
             getMeals(selectedItem);
             });
+
 
         return rootView;
     }
@@ -134,7 +154,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void getMeals(String rname){
+    void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getAPI()
@@ -143,17 +163,45 @@ public class tab1 extends Fragment implements View.OnClickListener{
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-
-                    Toast.makeText(getActivity(), response.body().string(), Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
+                    String s = response.body().string();
+                    jsonDecode(s);
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
+
+    private void jsonDecode(String s) throws JSONException {
+        JSONObject js = new JSONObject(s);
+        if (!js.getBoolean("error")){
+            JSONArray jArr = js.getJSONArray("message");
+            for(int i=0;i<jArr.length();i++){
+                String curr = jArr.getString(i);
+                //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
+                addMenuItem(curr);
+            }
+        }
+    }
+
+    private void addMenuItem(String item){
+        adapter.clear();
+        //listItems.clear();
+        listItems.add(item);
+        adapter.notifyDataSetChanged();
+    }
+
+    //@Override
+    public void onBackPressed()
+    {
+        //Intent intent = new Intent(this,ABC.class);
+        //startActivity(intent);
+    }
+
+
+
 }
