@@ -33,6 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class tab1 extends Fragment implements View.OnClickListener{
+    //wtf
     private View Tab1View;
     private ListView list_view;
     private ArrayAdapter<String> adapter;
