@@ -67,9 +67,13 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setAdapter(mAdapter);
 
         itemList.clear();
-        Item item = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
-        itemList.add(item);
+        Item OB = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
+        itemList.add(OB);
 
+        Item McD = new Item(R.drawable.blackblue,"McDonalds","Burgers boi");
+        itemList.add(McD);
+        itemList.add(McD);
+        itemList.add(McD);
 
         list_view = rootView.findViewById(R.id.list_view);
 
@@ -111,6 +115,8 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
         btnOrder.setOnClickListener(this);
 
+
+
         list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
             //Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
@@ -128,7 +134,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         }
     }
 
-    private void getMeals(String rname){
+    public void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getAPI()
@@ -137,6 +143,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+
                     Toast.makeText(getActivity(), response.body().string(), Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
