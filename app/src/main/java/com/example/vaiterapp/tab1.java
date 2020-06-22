@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaiterapp.API.RetrofitClient;
@@ -25,6 +27,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -34,13 +37,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class tab1 extends Fragment implements View.OnClickListener{
-    //wtf
+    private List<Item> itemList = new ArrayList<>();
+
     private View Tab1View;
     private ListView list_view;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> listItems;
     private Button btnOrder;
-    private RecyclerView recycler_view;
+
+    private RecyclerView recyclerview;
+    private MyAdapter mAdapter;
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,8 +59,20 @@ public class tab1 extends Fragment implements View.OnClickListener{
         tv.setTextColor(Color.RED);*/
         btnOrder = rootView.findViewById(R.id.btnOrder);
 
+        recyclerview=(RecyclerView) rootView.findViewById(R.id.recycler_view);
+        mAdapter = new MyAdapter(itemList);
+        RecyclerView.LayoutManager mLayoutManger = new LinearLayoutManager(getContext());
+        recyclerview.setLayoutManager(mLayoutManger);
+        recyclerview.setItemAnimator(new DefaultItemAnimator());
+        recyclerview.setAdapter(mAdapter);
+
+        itemList.clear();
+        Item item = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
+        itemList.add(item);
+
+
         list_view = rootView.findViewById(R.id.list_view);
-        recycler_view = rootView.findViewById(R.id.my_recycler_view);
+
         list_view.setBackgroundResource(R.drawable.customshape);
         listItems = new ArrayList<String>();
 
