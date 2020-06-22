@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaiterapp.API.RetrofitClient;
 
@@ -39,6 +40,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
     private ArrayAdapter<String> adapter;
     private ArrayList<String> listItems;
     private Button btnOrder;
+    private RecyclerView recycler_view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +51,8 @@ public class tab1 extends Fragment implements View.OnClickListener{
         btnOrder = rootView.findViewById(R.id.btnOrder);
 
         list_view = rootView.findViewById(R.id.list_view);
-
+        recycler_view = rootView.findViewById(R.id.my_recycler_view);
+        list_view.setBackgroundResource(R.drawable.customshape);
         listItems = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(getActivity(),
@@ -70,6 +73,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
                 return view;
             }
         };
+
 
         list_view.setAdapter(adapter);
 
