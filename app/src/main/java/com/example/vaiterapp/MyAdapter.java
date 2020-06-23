@@ -1,6 +1,10 @@
 package com.example.vaiterapp;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,12 +30,15 @@ import retrofit2.Response;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     private List<Item> itemList;
-    public  tab1 Tab1;
+    public tab1 Tab1;
+    private recyclerViewOnClickListener listener;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, subtitle;
         public ImageView icon;
         public LinearLayout main;
+
 
         public MyViewHolder(final View parent) {
             super(parent);
@@ -39,62 +46,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             subtitle = (TextView) parent.findViewById(R.id.subtitle);
             icon = (ImageView) parent.findViewById(R.id.icon);
             main = (LinearLayout) parent.findViewById(R.id.main);
-
-            Tab1 = new tab1();
-
-            main.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
-                    if (getPosition() == 0){
-
-                        Tab1.getMeals("Ocean Basket");
-                    }
-                    if (getPosition() == 1){
-                        Tab1.getMeals("McDonalds");
-                    }
-                }
-            });
-        }
-        void getMeals(String rname){
-            Call<ResponseBody> call = RetrofitClient
-                    .getInstance()
-                    .getAPI()
-                    .getMeals(rname);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    try {
-                        String s = response.body().string();
-                        JSONObject js = new JSONObject(s);
-                        if (!js.getBoolean("error")){
-                            JSONArray jArr = js.getJSONArray("message");
-                            for(int i=0;i<jArr.length();i++){
-                                String curr = jArr.getString(i);
-                                //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
-                                //listItems.add(curr);
-                            }
-                        }
-                    } catch (IOException | JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(itemView.getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
         }
     }
+
     public MyAdapter(List<Item>itemList){
         this.itemList=itemList;
     }
 
 
-
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
+        //itemView.setVisibility(View.GONE);
+
         return new MyViewHolder(itemView);
     }
     @Override
@@ -109,6 +73,46 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         return itemList.size();
     }
 
+}
+
+interface ClickListener{
+    void onClick(View view, int position);
+}
 
 
+class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
+
+    private ClickListener clicklistener;
+    private GestureDetector gestureDetector;
+
+    public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener){
+
+        this.clicklistener=clicklistener;
+        gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        View child=rv.findChildViewUnder(e.getX(),e.getY());
+        if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
+            clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
 }

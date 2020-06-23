@@ -45,7 +45,8 @@ import retrofit2.Response;
 
 public class tab1 extends Fragment implements View.OnClickListener{
 
-    private List<Item> itemList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<Item>();
+    private List<Item> itemListMenu = new ArrayList<Item>();
     private View Tab1View;
     //private ListView list_view;
 /*    private ArrayAdapter<String> adapter;
@@ -53,7 +54,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
     private Button btnOrder;
 
     private RecyclerView recyclerview;
-    private MyAdapter mAdapter;
+    private MyAdapter rAdapter, menuAdapter;
 
     /*@Override
     public void onAttach(@NonNull Context context) {
@@ -82,11 +83,12 @@ public class tab1 extends Fragment implements View.OnClickListener{
         btnOrder = rootView.findViewById(R.id.btnOrder);
 
         recyclerview=(RecyclerView) rootView.findViewById(R.id.recycler_view);
-        mAdapter = new MyAdapter(itemList);
+        rAdapter = new MyAdapter(itemList);
+        menuAdapter = new MyAdapter(itemListMenu);
         RecyclerView.LayoutManager mLayoutManger = new LinearLayoutManager(getContext());
         recyclerview.setLayoutManager(mLayoutManger);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
-        recyclerview.setAdapter(mAdapter);
+        recyclerview.setAdapter(rAdapter);
 
         itemList.clear();
         Item OB = new Item(R.drawable.ob,"Ocean Basket","Fancy Fish restaurant");
@@ -94,6 +96,25 @@ public class tab1 extends Fragment implements View.OnClickListener{
         itemList.add(OB);
         itemList.add(McD);
 
+        Item lol = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
+        itemListMenu.add(lol);
+
+        /*recyclerview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.wtf("wtf", "what is happening");
+                Toast.makeText(getActivity(), "????????", Toast.LENGTH_LONG).show();
+            }
+        });*/
+
+        recyclerview.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
+                recyclerview, new ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                Log.e("lol", "Short press on position :" + position);
+                recyclerview.setAdapter(menuAdapter);
+            }
+        }));
 
         /*list_view = rootView.findViewById(R.id.list_view);
 
