@@ -33,12 +33,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     public tab1 Tab1;
     private recyclerViewOnClickListener listener;
 
+    public static TextView title, subtitle;
+    public static ImageView icon;
+    public static LinearLayout main;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, subtitle;
-        public ImageView icon;
-        public LinearLayout main;
-
 
         public MyViewHolder(final View parent) {
             super(parent);
@@ -46,6 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             subtitle = (TextView) parent.findViewById(R.id.subtitle);
             icon = (ImageView) parent.findViewById(R.id.icon);
             main = (LinearLayout) parent.findViewById(R.id.main);
+            //title.setVisibility(View.VISIBLE);
         }
     }
 
@@ -64,9 +64,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Item row=itemList.get(position);
-        holder.title.setText(row.getTitle());
-        holder.subtitle.setText(row.getSubtitle());
-        holder.icon.setImageResource(row.getImageId());
+        MyAdapter.title.setText(row.getTitle());
+        MyAdapter.icon.setImageResource(row.getImageId());
     }
     @Override
     public int getItemCount() {

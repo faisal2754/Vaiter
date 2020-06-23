@@ -43,20 +43,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class tab1 extends Fragment implements View.OnClickListener{
+public class tab1 extends Fragment implements View.OnClickListener {
 
-    private List<Item> itemList = new ArrayList<Item>();
+    /*private List<Item> itemList = new ArrayList<Item>();
     private List<Item> itemListMenu = new ArrayList<Item>();
-    private List<Item> List_item_menu = new ArrayList<Item>();
-    private View Tab1View;
-    //private ListView list_view;
-/*    private ArrayAdapter<String> adapter;
-    private ArrayList<String> listItems;*/
+    private List<Item> List_item_menu = new ArrayList<Item>();*/
+
+    private ListView list_view;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> listItems;
     private Button btnOrder;
 
-    private RecyclerView recyclerview, recyclerview_menu;
+    int[] images = {R.drawable.mcdonalds};
+    String[] rNames = {"McDonalds??"};
+    ListAdapter listAdapter;
+
+    /*private RecyclerView recyclerview, recyclerview_menu;
     private MyAdapter rAdapter,menuAdapter;
-    private MyAdapterMenu menuAdapter2;
+    private MyAdapterMenu menuAdapter2;*/
 
     /*@Override
     public void onAttach(@NonNull Context context) {
@@ -84,7 +88,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         tv.setTextColor(Color.RED);*/
         btnOrder = rootView.findViewById(R.id.btnOrder);
 
-        recyclerview=(RecyclerView) rootView.findViewById(R.id.recycler_view);
+        /*recyclerview=(RecyclerView) rootView.findViewById(R.id.recycler_view);
         rAdapter = new MyAdapter(itemList);
         menuAdapter = new MyAdapter(itemListMenu);
         RecyclerView.LayoutManager mLayoutManger = new LinearLayoutManager(getContext());
@@ -93,7 +97,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setAdapter(rAdapter);
 
         recyclerview_menu=(RecyclerView) rootView.findViewById(R.id.recycler_view_menu);
-        menuAdapter2 = new MyAdapterMenu(List_item_menu);
+        menuAdapter2 = new MyAdapterMenu(itemListMenu);
         RecyclerView.LayoutManager menuLayoutManger = new LinearLayoutManager(getContext());
         recyclerview_menu.setLayoutManager(menuLayoutManger);
         recyclerview_menu.setItemAnimator(new DefaultItemAnimator());
@@ -107,28 +111,39 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
         Item lol = new Item(R.drawable.blackblue,"Ocean Basket","Fancy Fish restaurant");
         itemListMenu.add(lol);
+        menuAdapter.notifyDataSetChanged();*/
 
-        /*recyclerview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.wtf("wtf", "what is happening");
-                Toast.makeText(getActivity(), "????????", Toast.LENGTH_LONG).show();
-            }
-        });*/
-
-        recyclerview.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
+        /*recyclerview.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 recyclerview, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
                 Log.e("lol", "Short press on position :" + position);
-                recyclerview.setAdapter(menuAdapter);
+
+                *//*recyclerview_menu.setVisibility(View.VISIBLE);
+                recyclerview.setVisibility(View.GONE);*//*
             }
-        }));
+        }));*/
 
-        /*list_view = rootView.findViewById(R.id.list_view);
+        list_view = rootView.findViewById(R.id.list_view);
+        listAdapter = new ListAdapter(this, rNames, images);
 
-        list_view.setBackgroundResource(R.drawable.customshape);
-        listItems = new ArrayList<String>();
+        list_view.setAdapter(listAdapter);
+
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Toast.makeText(getActivity(), "" + rNames[i], Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        return rootView;
+    }
+
+
+
+        //list_view.setBackgroundResource(R.drawable.customshape);
+        /*listItems = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -152,29 +167,28 @@ public class tab1 extends Fragment implements View.OnClickListener{
         list_view.setAdapter(adapter);
 
         listItems.add("Ocean Basket");
-        listItems.add("McDonalds");*/
+        listItems.add("McDonalds");
 
-        /*btnOrder.setOnClickListener(new View.OnClickListener() {
+        btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list_view.setVisibility(View.VISIBLE);
                 btnOrder.setVisibility(View.GONE);
             }
-        });*/
+        });
 
         btnOrder.setOnClickListener(this);
 
-        /*list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
             //Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
             getMeals(selectedItem);
-            });*/
-
+            });
 
         return rootView;
     }
 
-    /*@Override
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnOrder) {
             list_view.setVisibility(View.VISIBLE);
@@ -192,15 +206,7 @@ public class tab1 extends Fragment implements View.OnClickListener{
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String s = response.body().string();
-                    JSONObject js = new JSONObject(s);
-                    if (!js.getBoolean("error")){
-                        JSONArray jArr = js.getJSONArray("message");
-                        for(int i=0;i<jArr.length();i++){
-                            String curr = jArr.getString(i);
-                            //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
-
-                        }
-                    }
+                    jsonDecode(s);
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
@@ -212,32 +218,23 @@ public class tab1 extends Fragment implements View.OnClickListener{
         });
     }
 
-/*    private void jsonDecode(String s) throws JSONException {
+    private void jsonDecode(String s) throws JSONException {
         JSONObject js = new JSONObject(s);
         if (!js.getBoolean("error")){
             JSONArray jArr = js.getJSONArray("message");
+            adapter.clear();
             for(int i=0;i<jArr.length();i++){
                 String curr = jArr.getString(i);
                 //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
                 addMenuItem(curr);
             }
         }
-    }*/
-
-/*    private void addMenuItem(String item){
-        adapter.clear();
-        //listItems.clear();
-        listItems.add(item);
-        adapter.notifyDataSetChanged();
-    }*/
-
-    //@Override
-    public void onBackPressed()
-    {
-        //Intent intent = new Intent(this,ABC.class);
-        //startActivity(intent);
     }
 
+    private void addMenuItem(String item){
+        listItems.add(item);
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onClick(View v) {

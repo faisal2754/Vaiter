@@ -62,7 +62,6 @@ public class MyAdapterMenu extends RecyclerView.Adapter<MyAdapterMenu.MyViewHold
     public void onBindViewHolder(MyViewHolderMenu holder, int position) {
         Item row=itemList.get(position);
         holder.title.setText(row.getTitle());
-        holder.subtitle.setText(row.getSubtitle());
         holder.icon.setImageResource(row.getImageId());
     }
     @Override
