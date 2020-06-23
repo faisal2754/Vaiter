@@ -30,6 +30,14 @@
         android:visibility="visible"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:visibility="visible"
+        />
+
 
 
 

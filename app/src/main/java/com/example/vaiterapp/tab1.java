@@ -47,14 +47,16 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
     private List<Item> itemList = new ArrayList<Item>();
     private List<Item> itemListMenu = new ArrayList<Item>();
+    private List<Item> List_item_menu = new ArrayList<Item>();
     private View Tab1View;
     //private ListView list_view;
 /*    private ArrayAdapter<String> adapter;
     private ArrayList<String> listItems;*/
     private Button btnOrder;
 
-    private RecyclerView recyclerview;
-    private MyAdapter rAdapter, menuAdapter;
+    private RecyclerView recyclerview, recyclerview_menu;
+    private MyAdapter rAdapter,menuAdapter;
+    private MyAdapterMenu menuAdapter2;
 
     /*@Override
     public void onAttach(@NonNull Context context) {
@@ -89,6 +91,13 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setLayoutManager(mLayoutManger);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
         recyclerview.setAdapter(rAdapter);
+
+        recyclerview_menu=(RecyclerView) rootView.findViewById(R.id.recycler_view_menu);
+        menuAdapter2 = new MyAdapterMenu(List_item_menu);
+        RecyclerView.LayoutManager menuLayoutManger = new LinearLayoutManager(getContext());
+        recyclerview_menu.setLayoutManager(menuLayoutManger);
+        recyclerview_menu.setItemAnimator(new DefaultItemAnimator());
+        recyclerview_menu.setAdapter(menuAdapter2);
 
         itemList.clear();
         Item OB = new Item(R.drawable.ob,"Ocean Basket","Fancy Fish restaurant");

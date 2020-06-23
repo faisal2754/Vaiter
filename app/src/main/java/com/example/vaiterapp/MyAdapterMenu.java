@@ -1,6 +1,9 @@
 package com.example.vaiterapp;
 
+import android.content.Context;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -40,65 +43,23 @@ public class MyAdapterMenu extends RecyclerView.Adapter<MyAdapterMenu.MyViewHold
             icon = (ImageView) parent.findViewById(R.id.icon_menu);
             main = (LinearLayout) parent.findViewById(R.id.main_menu);
 
-            Tab1 = new tab1();
-
-            main.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "Position:" + Integer.toString(getPosition()), Toast.LENGTH_SHORT).show();
-                    if (getPosition() == 0){
-
-                        Tab1.getMeals("Ocean Basket");
-                    }
-                    if (getPosition() == 1){
-                        Tab1.getMeals("McDonalds");
-                    }
-                }
-            });
         }
-        void getMeals(String rname){
-            Call<ResponseBody> call = RetrofitClient
-                    .getInstance()
-                    .getAPI()
-                    .getMeals(rname);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    try {
-                        String s = response.body().string();
-                        JSONObject js = new JSONObject(s);
-                        if (!js.getBoolean("error")){
-                            JSONArray jArr = js.getJSONArray("message");
-                            for(int i=0;i<jArr.length();i++){
-                                String curr = jArr.getString(i);
-                                //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();
-                                //listItems.add(curr);
-                            }
-                        }
-                    } catch (IOException | JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(itemView.getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }
+
     }
     public MyAdapterMenu(List<Item>itemList){
         this.itemList=itemList;
     }
 
 
-
     @Override
-    public MyAdapterMenu.MyViewHolderMenu onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyAdapterMenu.MyViewHolderMenu onCreateViewHolder(ViewGroup parent, int viewType){
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
-        return new MyAdapterMenu.MyViewHolderMenu(itemView);
+        //itemView.setVisibility(View.GONE);
+
+        return new MyViewHolderMenu(itemView);
     }
     @Override
-    public void onBindViewHolder(MyAdapterMenu.MyViewHolderMenu holder, int position) {
+    public void onBindViewHolder(MyViewHolderMenu holder, int position) {
         Item row=itemList.get(position);
         holder.title.setText(row.getTitle());
         holder.subtitle.setText(row.getSubtitle());
@@ -109,6 +70,46 @@ public class MyAdapterMenu extends RecyclerView.Adapter<MyAdapterMenu.MyViewHold
         return itemList.size();
     }
 
+}
+
+interface ClickListener2{
+    void onClick(View view, int position);
+}
 
 
+class RecyclerTouchListener2 implements RecyclerView.OnItemTouchListener{
+
+    private ClickListener clicklistener;
+    private GestureDetector gestureDetector;
+
+    public RecyclerTouchListener2(Context context, final RecyclerView recycleView, final ClickListener clicklistener){
+
+        this.clicklistener=clicklistener;
+        gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+        View child=rv.findChildViewUnder(e.getX(),e.getY());
+        if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
+            clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+    }
+
+    @Override
+    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+    }
 }
