@@ -46,6 +46,8 @@ import retrofit2.Response;
 public class tab1 extends Fragment implements View.OnClickListener{
 
     private List<Item> itemList = new ArrayList<>();
+    private List<Item> menuList = new ArrayList<>();
+
     private View Tab1View;
     //private ListView list_view;
 /*    private ArrayAdapter<String> adapter;
@@ -54,6 +56,10 @@ public class tab1 extends Fragment implements View.OnClickListener{
 
     private RecyclerView recyclerview;
     private MyAdapter mAdapter;
+
+    private RecyclerView recyclerview_menu;
+    private MyAdapterMenu menuAdapter;
+
 
     /*@Override
     public void onAttach(@NonNull Context context) {
@@ -87,6 +93,14 @@ public class tab1 extends Fragment implements View.OnClickListener{
         recyclerview.setLayoutManager(mLayoutManger);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
         recyclerview.setAdapter(mAdapter);
+
+        recyclerview_menu=(RecyclerView) rootView.findViewById(R.id.recycler_view);
+        menuAdapter = new MyAdapterMenu(menuList);
+        RecyclerView.LayoutManager menuLayoutManger = new LinearLayoutManager(getContext());
+        recyclerview_menu.setLayoutManager(menuLayoutManger);
+        recyclerview_menu.setItemAnimator(new DefaultItemAnimator());
+        recyclerview_menu.setAdapter(menuAdapter);
+
 
         itemList.clear();
         Item OB = new Item(R.drawable.ob,"Ocean Basket","Fancy Fish restaurant");
