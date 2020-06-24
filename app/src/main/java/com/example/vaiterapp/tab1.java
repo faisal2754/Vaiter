@@ -1,5 +1,7 @@
 package com.example.vaiterapp;
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -64,6 +66,9 @@ public class tab1 extends Fragment implements View.OnClickListener {
     DatePickerDialog Datepicker;
     EditText TimeText;
     EditText DateText;
+    Button confirmOrder;
+
+    private String mealChosen;
 
     private ListView list_view;
     private ArrayAdapter<String> adapter;
@@ -107,47 +112,56 @@ public class tab1 extends Fragment implements View.OnClickListener {
         tv.setTextColor(Color.RED);*/
         btnOrder = rootView.findViewById(R.id.btnOrder);
 
+        confirmOrder = rootView.findViewById(R.id.btnConfirmOrder);
+        confirmOrder.setVisibility(View.GONE);
+        confirmOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        TimeText=(EditText) rootView.findViewById(R.id.in_time);
-//        TimeText.setInputType(InputType.TYPE_NULL);
-//        TimeText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Calendar cldr = Calendar.getInstance();
-//                int hour = cldr.get(Calendar.HOUR_OF_DAY);
-//                int minutes = cldr.get(Calendar.MINUTE);
-//                // time picker dialog
-//                picker = new TimePickerDialog(getContext(),
-//                        new TimePickerDialog.OnTimeSetListener() {
-//                            @Override
-//                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-//                                TimeText.setText(sHour + ":" + sMinute);
-//                            }
-//                        }, hour, minutes, true);
-//                picker.show();
-//            }
-//        });
-//
-//        DateText=(EditText) rootView.findViewById(R.id.in_date);
-//        DateText.setInputType(InputType.TYPE_NULL);
-//        DateText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final Calendar cldr = Calendar.getInstance();
-//                int day = cldr.get(Calendar.DAY_OF_MONTH);
-//                int month = cldr.get(Calendar.MONTH);
-//                int year = cldr.get(Calendar.YEAR);
-//                // date picker dialog
-//                Datepicker = new DatePickerDialog(getContext(),
-//                        new DatePickerDialog.OnDateSetListener() {
-//                            @Override
-//                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                                DateText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-//                            }
-//                        }, year, month, day);
-//                Datepicker.show();
-//            }
-//        });
+            }
+        });
+
+        TimeText=(EditText) rootView.findViewById(R.id.in_time);
+        TimeText.setInputType(InputType.TYPE_NULL);
+        TimeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                picker = new TimePickerDialog(getContext(),
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                TimeText.setText(sHour + ":" + sMinute);
+                            }
+                        }, hour, minutes, true);
+                picker.show();
+            }
+        });
+
+        DateText=(EditText) rootView.findViewById(R.id.in_date);
+        DateText.setInputType(InputType.TYPE_NULL);
+        DateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                Datepicker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                DateText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                Datepicker.show();
+            }
+        });
 
 
 
@@ -200,7 +214,12 @@ public class tab1 extends Fragment implements View.OnClickListener {
                         getMeals(rNames[i]);
                         setMenuBool();
                     } else {
-                        Toast.makeText(getActivity(), ""+adapterView.getItemIdAtPosition(i), Toast.LENGTH_SHORT).show();
+                        mealChosen = (String) adapterView.getItemAtPosition(i);
+                        Toast.makeText(getActivity(), mealChosen, Toast.LENGTH_SHORT).show();
+                        list_view.setVisibility(View.GONE);
+                        TimeText.setVisibility(View.VISIBLE);
+                        DateText.setVisibility(View.VISIBLE);
+                        confirmOrder.setVisibility(View.VISIBLE);
                     }
 
 
@@ -237,13 +256,13 @@ public class tab1 extends Fragment implements View.OnClickListener {
         //list_view.setAdapter(adapter);
 
 
-        /*btnOrder.setOnClickListener(new View.OnClickListener() {
+        btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list_view.setVisibility(View.VISIBLE);
                 btnOrder.setVisibility(View.GONE);
             }
-        });*/
+        });
 
         /*if (menuList){
             list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
@@ -267,6 +286,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
     private void setMenuBool(){
         menuList = !menuList;
     }
+
 
     void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
