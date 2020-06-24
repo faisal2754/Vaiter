@@ -100,42 +100,72 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_edittext"
                 android:spinnerMode="dropdown"/>
 
-            <EditText
-                android:id="@+id/staffSPass"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_lock"
-                android:ems="10"
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:hint="Password"
-                android:layout_gravity="center"
-                android:gravity="center"
+
                 android:textColorHint="@color/white_pressed"
-                android:inputType="textPassword"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:paddingLeft="10dp"/>
-            <EditText
-                android:id="@+id/staffSPassC"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
                 android:textColor="@color/white"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_lock"
-                android:ems="10"
-                android:hint="Confirm Password"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white_pressed">
+                <EditText
+                    android:id="@+id/staffSPass"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:ems="10"
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_pressed"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="10dp"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:paddingLeft="10dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:hint="Confirm Password"
+
                 android:textColorHint="@color/white_pressed"
-                android:inputType="textPassword"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/white"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white_pressed">
+
+                <EditText
+                    android:id="@+id/staffSPassC"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:ems="10"
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_pressed"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="20dp"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:paddingLeft="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/btnStaffSignUp"

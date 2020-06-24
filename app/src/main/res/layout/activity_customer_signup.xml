@@ -85,43 +85,75 @@
                 android:gravity="center"
                 android:textColorHint="@color/white_pressed"
                 android:inputType="textEmailAddress"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:drawableStart="@drawable/ic_lock"
                 android:paddingLeft="10dp"/>
 
-            <EditText
-                android:id="@+id/cusSPass"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_lock"
-                android:ems="10"
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:hint="Password"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColorHint="@color/white_pressed"
-                android:inputType="textPassword"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:paddingLeft="10dp"/>
 
-            <EditText
-                android:id="@+id/cusSPassC"
-                android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded_edittext"
-                android:drawableLeft="@drawable/ic_lock"
-                android:ems="10"
-                android:hint="Confirm Password"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:textColorHint="@color/white_pressed"
-                android:inputType="textPassword"
-                android:layout_marginBottom="20dp"
-                android:drawableStart="@drawable/ic_lock"
-                android:paddingLeft="10dp"/>
+                android:textColor="@color/white"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white_pressed">
+
+                <EditText
+                    android:id="@+id/cusSPass"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:ems="10"
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_pressed"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="10dp"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:paddingLeft="10dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:hint="Confirm Password"
+
+                android:textColorHint="@color/white_pressed"
+                android:textColor="@color/white"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white_pressed">
+                <EditText
+                    android:id="@+id/cusSPassC"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:ems="10"
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColorHint="@color/white_pressed"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="20dp"
+                    android:drawableStart="@drawable/ic_lock"
+                    android:paddingLeft="10dp"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <Button
                 android:id="@+id/btnCusSignUp"

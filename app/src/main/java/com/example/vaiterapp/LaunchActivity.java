@@ -41,7 +41,6 @@ public class LaunchActivity extends AppCompatActivity {
     public void LoginClick(){
         Intent staffIntent = new Intent(LaunchActivity.this, LoginActivity.class);
         startActivity(staffIntent);
-
     }
 
     public void CustomerClick(){
