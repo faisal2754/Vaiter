@@ -1,9 +1,12 @@
 package com.example.vaiterapp;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -38,6 +42,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -49,6 +58,12 @@ public class tab1 extends Fragment implements View.OnClickListener {
     /*private List<Item> itemList = new ArrayList<Item>();
     private List<Item> itemListMenu = new ArrayList<Item>();
     private List<Item> List_item_menu = new ArrayList<Item>();*/
+
+
+    TimePickerDialog picker;
+    DatePickerDialog Datepicker;
+    EditText TimeText;
+    EditText DateText;
 
     private ListView list_view;
     private ArrayAdapter<String> adapter;
@@ -91,6 +106,50 @@ public class tab1 extends Fragment implements View.OnClickListener {
         tv.setText("WHATSUP");
         tv.setTextColor(Color.RED);*/
         btnOrder = rootView.findViewById(R.id.btnOrder);
+
+
+//        TimeText=(EditText) rootView.findViewById(R.id.in_time);
+//        TimeText.setInputType(InputType.TYPE_NULL);
+//        TimeText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Calendar cldr = Calendar.getInstance();
+//                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+//                int minutes = cldr.get(Calendar.MINUTE);
+//                // time picker dialog
+//                picker = new TimePickerDialog(getContext(),
+//                        new TimePickerDialog.OnTimeSetListener() {
+//                            @Override
+//                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+//                                TimeText.setText(sHour + ":" + sMinute);
+//                            }
+//                        }, hour, minutes, true);
+//                picker.show();
+//            }
+//        });
+//
+//        DateText=(EditText) rootView.findViewById(R.id.in_date);
+//        DateText.setInputType(InputType.TYPE_NULL);
+//        DateText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final Calendar cldr = Calendar.getInstance();
+//                int day = cldr.get(Calendar.DAY_OF_MONTH);
+//                int month = cldr.get(Calendar.MONTH);
+//                int year = cldr.get(Calendar.YEAR);
+//                // date picker dialog
+//                Datepicker = new DatePickerDialog(getContext(),
+//                        new DatePickerDialog.OnDateSetListener() {
+//                            @Override
+//                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                                DateText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+//                            }
+//                        }, year, month, day);
+//                Datepicker.show();
+//            }
+//        });
+
+
 
         /*recyclerview=(RecyclerView) rootView.findViewById(R.id.recycler_view);
         rAdapter = new MyAdapter(itemList);
@@ -148,6 +207,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     //Toast.makeText(getActivity(), "" + menuList, Toast.LENGTH_SHORT).show();
                 }
             });
+
 
 
 
@@ -229,6 +289,8 @@ public class tab1 extends Fragment implements View.OnClickListener {
             }
         });
     }
+
+
 
     private void jsonDecode(String s) throws JSONException {
         JSONObject js = new JSONObject(s);
