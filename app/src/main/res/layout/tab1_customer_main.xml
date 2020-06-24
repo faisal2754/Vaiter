@@ -21,22 +21,52 @@
         android:textSize="18sp"
         android:visibility="visible" />
 
-
-    <ListView
-        android:id="@+id/list_view"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:height="40dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="#003366"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:text="Where would you like to eat?"
+        >
 
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="-1dp"
-        android:visibility="gone">
+    </TextView>
 
-    </ListView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="40dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true">
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="-1dp"
+            android:visibility="gone">
+
+        </ListView>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
 
     <EditText
         android:id="@+id/in_date"

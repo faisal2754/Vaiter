@@ -214,6 +214,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                         getMeals(rNames[i]);
                         setMenuBool();
                     } else {
+                        setMenuBool();
                         mealChosen = (String) adapterView.getItemAtPosition(i);
                         Toast.makeText(getActivity(), mealChosen, Toast.LENGTH_SHORT).show();
                         list_view.setVisibility(View.GONE);
