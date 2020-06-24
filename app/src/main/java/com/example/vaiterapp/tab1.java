@@ -32,6 +32,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -53,10 +54,13 @@ public class tab1 extends Fragment implements View.OnClickListener {
     private ArrayAdapter<String> adapter;
     private ArrayList<String> listItems;
     private Button btnOrder;
+    private boolean menuList = false;
 
-    int[] images = {R.drawable.mcdonalds};
-    String[] rNames = {"McDonalds??"};
+    int[] rImages = {R.drawable.ob, R.drawable.mcdonalds};
+    String[] rNames = {"Ocean Basket", "McDonalds"};
     ListAdapter listAdapter;
+
+
 
     /*private RecyclerView recyclerview, recyclerview_menu;
     private MyAdapter rAdapter,menuAdapter;
@@ -125,25 +129,31 @@ public class tab1 extends Fragment implements View.OnClickListener {
         }));*/
 
         list_view = rootView.findViewById(R.id.list_view);
-        listAdapter = new ListAdapter(this, rNames, images);
-
+        listAdapter = new ListAdapter(this, rNames, rImages);
         list_view.setAdapter(listAdapter);
 
-        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (!menuList){
+                        Toast.makeText(getActivity(), ""+adapterView.getItemIdAtPosition(i), Toast.LENGTH_SHORT).show();
+                        list_view.setAdapter(adapter);
+                        getMeals(rNames[i]);
+                        setMenuBool();
+                    } else {
+                        Toast.makeText(getActivity(), ""+adapterView.getItemIdAtPosition(i), Toast.LENGTH_SHORT).show();
+                    }
 
-                Toast.makeText(getActivity(), "" + rNames[i], Toast.LENGTH_SHORT).show();
 
-            }
-        });
-        return rootView;
-    }
+                    //Toast.makeText(getActivity(), "" + menuList, Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
 
 
         //list_view.setBackgroundResource(R.drawable.customshape);
-        /*listItems = new ArrayList<String>();
+        listItems = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -164,37 +174,39 @@ public class tab1 extends Fragment implements View.OnClickListener {
             }
         };
 
-        list_view.setAdapter(adapter);
+        //list_view.setAdapter(adapter);
 
-        listItems.add("Ocean Basket");
-        listItems.add("McDonalds");
 
-        btnOrder.setOnClickListener(new View.OnClickListener() {
+        /*btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list_view.setVisibility(View.VISIBLE);
                 btnOrder.setVisibility(View.GONE);
             }
-        });
+        });*/
 
-        btnOrder.setOnClickListener(this);
-
-        list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
-            String selectedItem = (String) parent.getItemAtPosition(position);
-            //Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
-            getMeals(selectedItem);
+        /*if (menuList){
+            list_view.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                Toast.makeText(getActivity(), selectedItem, Toast.LENGTH_SHORT).show();
             });
+        }*/
+
 
         return rootView;
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnOrder) {
             list_view.setVisibility(View.VISIBLE);
             btnOrder.setVisibility(View.GONE);
         }
     }*/
+
+    private void setMenuBool(){
+        menuList = !menuList;
+    }
 
     void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
@@ -222,7 +234,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
         JSONObject js = new JSONObject(s);
         if (!js.getBoolean("error")){
             JSONArray jArr = js.getJSONArray("message");
-            adapter.clear();
+
             for(int i=0;i<jArr.length();i++){
                 String curr = jArr.getString(i);
                 //Toast.makeText(getActivity(), curr, Toast.LENGTH_LONG).show();

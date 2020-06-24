@@ -1,6 +1,8 @@
 package com.example.vaiterapp;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ListAdapter extends BaseAdapter {
+public class ListAdapter extends BaseAdapter{
     tab1 context;
     private final String [] rNames;
     private final int [] images;
@@ -68,13 +70,15 @@ public class ListAdapter extends BaseAdapter {
         viewHolder.txtName.setText(rNames[position]);
         viewHolder.icon.setImageResource(images[position]);
 
-        return convertView;
+
+
+        return result;
     }
 
     private static class ViewHolder {
 
         TextView txtName;
-        ImageView icon;
+        static ImageView icon;
 
     }
 }
