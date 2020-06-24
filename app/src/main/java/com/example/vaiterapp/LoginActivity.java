@@ -94,10 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
-        loadingBar.setTitle("Signing into account");
-        loadingBar.setMessage("Please wait, while we are signing into your account.");
-        loadingBar.setCanceledOnTouchOutside(true);
-        loadingBar.show();
+
 
         String email = eEmail.getText().toString();
         String pass = ePass.getText().toString();
@@ -139,6 +136,11 @@ public class LoginActivity extends AppCompatActivity {
                     .getAPI()
                     .customerLogin(email,pass);
         }
+
+        loadingBar.setTitle("Signing into account");
+        loadingBar.setMessage("Please wait, while we are signing into your account.");
+        loadingBar.setCanceledOnTouchOutside(true);
+        loadingBar.show();
 
 
         call.enqueue(new Callback<LoginResponse>() {
