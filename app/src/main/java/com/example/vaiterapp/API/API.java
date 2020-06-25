@@ -55,4 +55,10 @@ public interface API {
             @Field("CusID") int id
     );
 
+    @FormUrlEncoded
+    @POST("getOrder.php")
+    Call<ResponseBody> showOrders(
+            @Field("CusID") int id
+    );
+
 }

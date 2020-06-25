@@ -6,8 +6,10 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,6 +58,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class tab1 extends Fragment implements View.OnClickListener {
 
     /*private List<Item> itemList = new ArrayList<Item>();
@@ -69,10 +73,13 @@ public class tab1 extends Fragment implements View.OnClickListener {
     EditText DateText;
     Button confirmOrder;
 
+    private int currID = MainActivity.prf1.getInt("userID", 27);
+
     private String mealChosen;
     private String dateChosen;
     private String timeChosen;
     private String dateTime;
+
 
     private ListView list_view;
     private ArrayAdapter<String> adapter;
@@ -111,6 +118,8 @@ public class tab1 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab1_customer_main, container, false);
+
+        //sp = getSharedPreferences("user_details",MODE_PRIVATE);
         /*TextView tv = (TextView) rootView.findViewById(R.id.section_label);
         tv.setText("WHATSUP");
         tv.setTextColor(Color.RED);*/
@@ -125,10 +134,9 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), "Please choose both a date and time", Toast.LENGTH_LONG).show();
                 } else {
                     dateTime = dateChosen + " " + timeChosen;
-                    createOrder(mealChosen, dateTime, LoginActivity.currUserID);
-                    //Toast.makeText(getActivity(), dateTime, Toast.LENGTH_LONG).show();
-                }
-
+                    createOrder(mealChosen, dateTime, currID);
+                    resetFragment();
+                    }
             }
         });
 
@@ -318,6 +326,25 @@ public class tab1 extends Fragment implements View.OnClickListener {
         menuList = !menuList;
     }
 
+    private void resetFragment(){
+        new Handler().post(new Runnable() {
+
+            @Override
+            public void run()
+            {
+                Intent intent = getActivity().getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getActivity().overridePendingTransition(0, 0);
+                getActivity().finish();
+
+                getActivity().overridePendingTransition(0, 0);
+                startActivity(intent);
+            }
+        });
+
+    }
+
     private void createOrder(String mealName, String dTime, int CusID){
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
@@ -327,6 +354,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    assert response.body() != null;
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();

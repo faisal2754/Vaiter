@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences prf1;
+    static SharedPreferences prf1;
 
 
     @Override
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             SendUserToLaunchActivity();
         }
         else{
+            //Toast.makeText(this, prf1.getInt("userID", 27))
             SendUserToMainActivity();
         }
 

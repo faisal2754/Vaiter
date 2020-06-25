@@ -78,7 +78,7 @@ public class ListAdapter extends BaseAdapter{
     private static class ViewHolder {
 
         TextView txtName;
-        static ImageView icon;
+        ImageView icon;
 
     }
 }
