@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences pref;
 
+    public static String currUserName;
+    public static int currUserID;
 
 
     @Override
@@ -150,9 +152,16 @@ public class LoginActivity extends AppCompatActivity {
                 if (!loginResponse.isError()){
                     loadingBar.dismiss();
 
-
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    User currUser = loginResponse.getUser();
+                    currUserName = currUser.getFirstName();
+                    if (cStaff.isChecked()){
+                        currUserID = currUser.getStaffID();
+                    } else {
+                        currUserID = currUser.getCustomerID();
+                    }
 
+                    //Toast.makeText(LoginActivity.this, ""+currUserID, Toast.LENGTH_LONG).show();
 
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("email",email);
