@@ -47,5 +47,12 @@ public interface API {
             @Field("RestaurantName") String fname
     );
 
+    @FormUrlEncoded
+    @POST("createOrder.php")
+    Call<ResponseBody> createOrder(
+            @Field("MealName") String mname,
+            @Field("DateTime") String dtime,
+            @Field("CusID") int id
+    );
 
 }

@@ -166,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("email",email);
                     editor.putString("password",pass);
+                    editor.putInt("userID", currUserID);
                     editor.commit();
 
                     goToCustomerActivity();

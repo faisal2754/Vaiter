@@ -54,6 +54,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class tab1 extends Fragment implements View.OnClickListener {
 
@@ -69,6 +70,9 @@ public class tab1 extends Fragment implements View.OnClickListener {
     Button confirmOrder;
 
     private String mealChosen;
+    private String dateChosen;
+    private String timeChosen;
+    private String dateTime;
 
     private ListView list_view;
     private ArrayAdapter<String> adapter;
@@ -117,6 +121,13 @@ public class tab1 extends Fragment implements View.OnClickListener {
         confirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (dateChosen == null || timeChosen == null){
+                    Toast.makeText(getActivity(), "Please choose both a date and time", Toast.LENGTH_LONG).show();
+                } else {
+                    dateTime = dateChosen + " " + timeChosen;
+                    createOrder(mealChosen, dateTime, LoginActivity.currUserID);
+                    //Toast.makeText(getActivity(), dateTime, Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -143,6 +154,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                                     sM = "0"+sM;
                                 }
                                 TimeText.setText(sH + ":" + sM);
+                                timeChosen = sH + ":" + sM;
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -174,6 +186,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                                     sDay = "0"+sDay;
                                 }
                                 DateText.setText(sYear + "/" + (sMonth) + "/" + sDay);
+                                dateChosen = sYear + "/" + (sMonth) + "/" + sDay;
                             }
                         }, year, month, day);
                 Datepicker.show();
@@ -305,6 +318,29 @@ public class tab1 extends Fragment implements View.OnClickListener {
         menuList = !menuList;
     }
 
+    private void createOrder(String mealName, String dTime, int CusID){
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getAPI()
+                .createOrder(mealName, dTime, CusID);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String s = response.body().string();
+                    JSONObject js = new JSONObject(s);
+                    Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     void getMeals(String rname){
         Call<ResponseBody> call = RetrofitClient
