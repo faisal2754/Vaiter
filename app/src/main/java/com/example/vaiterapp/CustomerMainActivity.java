@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
@@ -28,8 +29,13 @@ import com.example.vaiterapp.ui.main.SectionsPagerAdapter;
 public class CustomerMainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-
+    public MenuItem logout;
+    public MenuItem darkmode;
+    public MenuItem lightmode;
     SharedPreferences prf;
+
+
+
 
 
     @Override
@@ -43,6 +49,11 @@ public class CustomerMainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
+
+        logout = findViewById(R.id.logout_option);
+        darkmode = findViewById(R.id.darkmode_option);
+        lightmode = findViewById(R.id.lightmode_option);
+
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
@@ -77,17 +88,26 @@ public class CustomerMainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.user_menu, menu);
 
 
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
+
+
         if(item.getItemId() == R.id.logout_option){
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             logout();
             SendUserToLaunchActivity();
+        }
+        if(item.getItemId() == R.id.darkmode_option){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+        if(item.getItemId() == R.id.lightmode_option){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         }
         return true;
 //        switch (item.getItemId()){
@@ -116,4 +136,6 @@ public class CustomerMainActivity extends AppCompatActivity {
         editor.commit();
         SendUserToLaunchActivity();
     }
+
+
 }

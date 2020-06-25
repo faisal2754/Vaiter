@@ -1,6 +1,7 @@
 package com.example.vaiterapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences prf1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         lin.setGravity(Gravity.CENTER);
         lin.setOrientation(LinearLayout.VERTICAL);
         setContentView(lin);
+
 
     }
 

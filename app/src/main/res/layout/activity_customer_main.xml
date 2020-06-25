@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
+    android:configChanges="uiMode"
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.CustomerMainActivity">
 
@@ -47,7 +47,7 @@
         android:textAllCaps="false"
         android:layout_gravity="bottom"
         app:tabTextColor="@color/white"
-        android:background="#003366" />
+        android:background="@color/MidBlueBlack" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
