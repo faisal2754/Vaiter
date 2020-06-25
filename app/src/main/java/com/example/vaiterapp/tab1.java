@@ -134,7 +134,15 @@ public class tab1 extends Fragment implements View.OnClickListener {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                TimeText.setText(sHour + ":" + sMinute);
+                                String sH = Integer.toString(sHour);
+                                String sM = Integer.toString(sMinute);
+                                if(sH.length() == 1){
+                                    sH = "0"+sH;
+                                }
+                                if(sM.length() == 1){
+                                    sM = "0"+sM;
+                                }
+                                TimeText.setText(sH + ":" + sM);
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -156,7 +164,16 @@ public class tab1 extends Fragment implements View.OnClickListener {
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                DateText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                String sMonth = Integer.toString(monthOfYear+1);
+                                String sDay = Integer.toString(dayOfMonth);
+                                String sYear = Integer.toString(year);
+                                if(sMonth.length() == 1){
+                                    sMonth = "0"+sMonth;
+                                }
+                                if(sDay.length() == 1){
+                                    sDay = "0"+sDay;
+                                }
+                                DateText.setText(sYear + "/" + (sMonth) + "/" + sDay);
                             }
                         }, year, month, day);
                 Datepicker.show();
