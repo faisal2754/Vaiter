@@ -34,6 +34,7 @@ public class CustomerMainActivity extends AppCompatActivity {
     public MenuItem lightmode;
     SharedPreferences prf;
 
+    Menu optionsMenu;
 
 
 
@@ -50,9 +51,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
-        logout = findViewById(R.id.logout_option);
-        darkmode = findViewById(R.id.darkmode_option);
-        lightmode = findViewById(R.id.lightmode_option);
+
 
 
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
@@ -86,7 +85,9 @@ public class CustomerMainActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
 
         getMenuInflater().inflate(R.menu.user_menu, menu);
+        optionsMenu = menu;
 
+//        optionsMenu.getItem(1).setVisible(false);
 
         return true;
     }
@@ -95,18 +96,23 @@ public class CustomerMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
+        MenuItem darkmode = optionsMenu.findItem(R.id.darkmode_option);
+        MenuItem lightmode = optionsMenu.findItem(R.id.lightmode_option);
+
 
         if(item.getItemId() == R.id.logout_option){
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             logout();
             SendUserToLaunchActivity();
         }
-        if(item.getItemId() == R.id.darkmode_option){
+        else if(item.getItemId() == R.id.darkmode_option){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
+            Toast.makeText(this, "Dark Mode", Toast.LENGTH_SHORT).show();
         }
-        if(item.getItemId() == R.id.lightmode_option){
+        else if(item.getItemId() == R.id.lightmode_option){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Toast.makeText(this, "Light Mode", Toast.LENGTH_SHORT).show();
+//
 
         }
         return true;
@@ -122,6 +128,11 @@ public class CustomerMainActivity extends AppCompatActivity {
 
     }
 
+    public void Show(){
+        optionsMenu.getItem(1).setVisible(true);
+        optionsMenu.getItem(0).setVisible(false);
+    }
+
     private void SendUserToLaunchActivity() {
         Intent launchIntent = new Intent(CustomerMainActivity.this, LaunchActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -130,6 +141,7 @@ public class CustomerMainActivity extends AppCompatActivity {
     }
 
     public void logout(){
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         prf = getSharedPreferences("user_details",MODE_PRIVATE);
         SharedPreferences.Editor editor = prf.edit();
         editor.clear();

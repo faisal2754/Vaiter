@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -168,7 +169,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("password",pass);
                     editor.putInt("userID", currUserID);
                     editor.commit();
-
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     goToCustomerActivity();
 
 

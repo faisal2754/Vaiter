@@ -7,29 +7,24 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     <item
         android:title="Dark Mode"
         android:icon="@drawable/darkmode"
-
         android:visible="true"
         android:id="@+id/darkmode_option"
-        app:showAsAction="always"
+        app:showAsAction="never"
         >
     </item>
 
     <item
         android:title="Light Mode"
         android:icon="@drawable/lightmode"
-
         android:visible="true"
         android:id="@+id/lightmode_option"
-        app:showAsAction="always"
+        app:showAsAction="never"
         >
     </item>
-
 
     <item
     android:title="Logout"
     android:icon="@drawable/ic_menu"
-
-
     android:id="@+id/logout_option"
     app:showAsAction="never"
     >
