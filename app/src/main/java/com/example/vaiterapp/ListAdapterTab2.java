@@ -1,8 +1,5 @@
 package com.example.vaiterapp;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +10,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ListAdapter extends BaseAdapter{
-    tab1 context;
-    private final String [] rNames;
-    private final int [] images;
+import java.util.ArrayList;
 
-    public ListAdapter(tab1 context, String [] rNames, int [] images){
+public class ListAdapterTab2 extends BaseAdapter{
+    tab2 context;
+    private final ArrayList<String> meals;
+    private final ArrayList<String> dateTime;
+    private final ArrayList<Integer> images;
+
+    public ListAdapterTab2(tab2 context, ArrayList<String> meals, ArrayList<String> dateTime, ArrayList<Integer> images){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
-        this.rNames = rNames;
+        this.meals = meals;
+        this.dateTime = dateTime;
         this.images = images;
     }
 
     @Override
     public int getCount() {
-        return rNames.length;
+        return meals.size();
     }
 
     @Override
@@ -55,9 +56,10 @@ public class ListAdapter extends BaseAdapter{
 
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.single_list_item, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.aNametxt);
-            viewHolder.icon = (ImageView) convertView.findViewById(R.id.appIconIV);
+            convertView = inflater.inflate(R.layout.double_list_item, parent, false);
+            viewHolder.meal = (TextView) convertView.findViewById(R.id.txtMeal);
+            viewHolder.dtime = (TextView) convertView.findViewById(R.id.txtDateTime);
+            viewHolder.icon = (ImageView) convertView.findViewById(R.id.tab2icon);
 
             result=convertView;
 
@@ -67,8 +69,9 @@ public class ListAdapter extends BaseAdapter{
             result=convertView;
         }
 
-        viewHolder.txtName.setText(rNames[position]);
-        viewHolder.icon.setImageResource(images[position]);
+        viewHolder.meal.setText(meals.get(position));
+        viewHolder.dtime.setText(dateTime.get(position));
+        viewHolder.icon.setImageResource(images.get(position));
 
 
 
@@ -77,7 +80,8 @@ public class ListAdapter extends BaseAdapter{
 
     private static class ViewHolder {
 
-        TextView txtName;
+        TextView meal;
+        TextView dtime;
         ImageView icon;
 
     }

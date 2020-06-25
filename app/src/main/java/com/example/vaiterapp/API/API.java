@@ -56,8 +56,14 @@ public interface API {
     );
 
     @FormUrlEncoded
-    @POST("getOrder.php")
-    Call<ResponseBody> showOrders(
+    @POST("getCurrentOrders.php")
+    Call<ResponseBody> showCurrentOrders(
+            @Field("CusID") int id
+    );
+
+    @FormUrlEncoded
+    @POST("getOrderHistory.php")
+    Call<ResponseBody> showPastOrders(
             @Field("CusID") int id
     );
 

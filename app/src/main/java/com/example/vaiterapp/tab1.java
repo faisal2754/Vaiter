@@ -1,17 +1,11 @@
 package com.example.vaiterapp;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaiterapp.API.RetrofitClient;
 
@@ -38,16 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -56,9 +36,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class tab1 extends Fragment implements View.OnClickListener {
 
@@ -89,7 +66,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
 
     int[] rImages = {R.drawable.ob, R.drawable.mcdonalds};
     String[] rNames = {"Ocean Basket", "McDonalds"};
-    ListAdapter listAdapter;
+    ListAdapterTab1 listAdapterTab1;
 
 
 
@@ -134,7 +111,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), "Please choose both a date and time", Toast.LENGTH_LONG).show();
                 } else {
                     dateTime = dateChosen + " " + timeChosen;
-                    createOrder(mealChosen, dateTime, currID);
+                    //createOrder(mealChosen, dateTime, currID);
                     resetFragment();
                     }
             }
@@ -240,8 +217,8 @@ public class tab1 extends Fragment implements View.OnClickListener {
         }));*/
 
         list_view = rootView.findViewById(R.id.list_view);
-        listAdapter = new ListAdapter(this, rNames, rImages);
-        list_view.setAdapter(listAdapter);
+        listAdapterTab1 = new ListAdapterTab1(this, rNames, rImages);
+        list_view.setAdapter(listAdapterTab1);
 
             list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

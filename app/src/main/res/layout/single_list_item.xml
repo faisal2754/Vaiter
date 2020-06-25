@@ -6,7 +6,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/appIconIV"
+        android:id="@+id/tab2icon"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
@@ -23,8 +23,8 @@
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="50dp"
-        android:layout_toEndOf="@+id/appIconIV"
-        android:layout_toRightOf="@+id/appIconIV"
+        android:layout_toEndOf="@+id/tab2icon"
+        android:layout_toRightOf="@+id/tab2icon"
         android:maxLines="1"
         android:text="Android Name"
         android:textSize="40sp" />
