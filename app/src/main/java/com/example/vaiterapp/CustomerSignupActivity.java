@@ -124,7 +124,7 @@ public class CustomerSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
-                        goToCustomerActivity();
+                        LoginClick();
                     }
                     Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {

@@ -96,6 +96,13 @@ public class LoginActivity extends AppCompatActivity {
         //finish();
     }
 
+    public void goToStaffActivity(){
+        Intent signupIntent = new Intent(LoginActivity.this, StaffMainActivity.class);
+        signupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(signupIntent);
+        //finish();
+    }
+
     private void login(){
 
 
@@ -156,11 +163,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                     User currUser = loginResponse.getUser();
                     currUserName = currUser.getFirstName();
-                    if (cStaff.isChecked()){
+
+                    if(cStaff.isChecked()){
                         currUserID = currUser.getStaffID();
-                    } else {
+                    }
+                    else {
                         currUserID = currUser.getCustomerID();
                     }
+
 
                     //Toast.makeText(LoginActivity.this, ""+currUserID, Toast.LENGTH_LONG).show();
 
@@ -168,9 +178,20 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("email",email);
                     editor.putString("password",pass);
                     editor.putInt("userID", currUserID);
-                    editor.commit();
+                    //editor.commit();
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    goToCustomerActivity();
+
+                    if (cStaff.isChecked()){
+                        editor.putBoolean("staff", true);
+                        editor.commit();
+                        goToStaffActivity();
+                    } else {
+                        editor.putBoolean("staff", false);
+                        editor.commit();
+                        goToCustomerActivity();
+                    }
+
+
 
 
                 } else {

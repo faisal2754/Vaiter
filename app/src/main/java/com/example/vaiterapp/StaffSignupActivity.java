@@ -144,7 +144,7 @@ public class StaffSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
-                        goToStaffActivity();
+                        LoginClick();
                     }
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {

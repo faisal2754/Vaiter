@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.vaiterapp.R;
+import com.example.vaiterapp.StaffTab1;
+import com.example.vaiterapp.StaffTab2;
 import com.example.vaiterapp.tab1;
 import com.example.vaiterapp.tab2;
 import com.example.vaiterapp.tab3;
@@ -29,14 +31,11 @@ public class SectionPagerAdapterStaff extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                tab1 tab1 = new tab1();
+                StaffTab1 tab1 = new StaffTab1();
                 return tab1;
             case 1:
-                tab2 tab2 = new tab2();
+                StaffTab2 tab2 = new StaffTab2();
                 return tab2;
-            case 2:
-                tab3 tab3 = new tab3();
-                return tab3;
             default:
                 return null;
         }
@@ -47,11 +46,10 @@ public class SectionPagerAdapterStaff extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Current Orders";
+                return "Orders";
             case 1:
-                return "Order History";
-            case 2:
-                return "Order History";
+                return "History";
+
 
         }
         return null;

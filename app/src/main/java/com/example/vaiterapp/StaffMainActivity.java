@@ -1,5 +1,7 @@
 package com.example.vaiterapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.vaiterapp.ui.main.SectionPagerAdapterStaff;
@@ -7,6 +9,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.vaiterapp.ui.main.SectionsPagerAdapter;
 
 public class StaffMainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
+    SharedPreferences prf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class StaffMainActivity extends AppCompatActivity {
 
 
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,5 +51,76 @@ public class StaffMainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.user_menu, menu);
+
+
+//        optionsMenu.getItem(1).setVisible(false);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+//        MenuItem darkmode = optionsMenu.findItem(R.id.darkmode_option);
+//        MenuItem lightmode = optionsMenu.findItem(R.id.lightmode_option);
+
+
+        if(item.getItemId() == R.id.logout_option){
+            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+            logout();
+            SendUserToLaunchActivity();
+        }
+        else if(item.getItemId() == R.id.darkmode_option){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            Toast.makeText(this, "Dark Mode", Toast.LENGTH_SHORT).show();
+        }
+        else if(item.getItemId() == R.id.lightmode_option){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            Toast.makeText(this, "Light Mode", Toast.LENGTH_SHORT).show();
+//
+
+        }
+        return true;
+//        switch (item.getItemId()){
+//            case R.id.logout_option:
+//                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+//                logout();
+//                SendUserToLaunchActivity();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+
+    }
+
+
+
+    private void SendUserToLaunchActivity() {
+        Intent launchIntent = new Intent(StaffMainActivity.this, LaunchActivity.class);
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(launchIntent);
+        finish();
+    }
+
+    public void logout(){
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        prf = getSharedPreferences("user_details",MODE_PRIVATE);
+        SharedPreferences.Editor editor = prf.edit();
+        editor.clear();
+        editor.commit();
+        SendUserToLaunchActivity();
     }
 }

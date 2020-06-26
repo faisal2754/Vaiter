@@ -39,15 +39,19 @@ public class MainActivity extends AppCompatActivity {
         //SendUserToLaunchActivity();
 
         prf1 = getSharedPreferences("user_details",MODE_PRIVATE);
+        boolean staff = prf1.getBoolean("staff", false);
         String email = prf1.getString("email", "");
 
         if(email.equalsIgnoreCase("")){
 
             SendUserToLaunchActivity();
         }
-        else{
+        else if(staff == false){
             //Toast.makeText(this, prf1.getInt("userID", 27))
             SendUserToMainActivity();
+        }
+        else if(staff = true){
+            SendUserToStaffActivity();
         }
 
     }
@@ -63,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void SendUserToMainActivity() {
         Intent launchIntent = new Intent(MainActivity.this, CustomerMainActivity.class);
+        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(launchIntent);
+        finish();
+    }
+
+    private void SendUserToStaffActivity() {
+        Intent launchIntent = new Intent(MainActivity.this, StaffMainActivity.class);
         launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(launchIntent);
         finish();

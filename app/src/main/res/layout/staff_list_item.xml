@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/double_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    
+    <TextView
+        android:id="@+id/tMeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/tab2icon"
+        android:layout_toRightOf="@+id/tab2icon"
+        android:textColor="@color/MidBlueBlack"
+        android:maxLines="1"
+        android:text="Android Name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvCuss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/tab2icon"
+        android:layout_toRightOf="@+id/tab2icon"
+        android:textColor="@color/MidBlueBlack"
+        android:maxLines="1"
+        android:text="Android Name"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="60dp"
+        android:layout_toEndOf="@+id/tab2icon"
+        android:textColor="@color/MidBlueBlack"
+        android:layout_toRightOf="@+id/tab2icon"
+        android:maxLines="1"
+        android:text="Android Name"
+        android:textSize="20sp" />
+
+</RelativeLayout>
