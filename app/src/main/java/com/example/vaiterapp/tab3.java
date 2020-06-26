@@ -36,9 +36,9 @@ public class tab3 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View rootView = inflater.inflate(R.layout.tab2_customer_main,container,false);
+        View rootView = inflater.inflate(R.layout.tab3_customer_main,container,false);
 
-        listView = rootView.findViewById(R.id.listTab2);
+        listView = rootView.findViewById(R.id.listTab3);
 
         listAdapter = new ListAdapterTab3(this, meals, dateTime, mImages);
         listView.setAdapter(listAdapter);

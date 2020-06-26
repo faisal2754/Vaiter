@@ -7,8 +7,44 @@
     android:layout_height="match_parent"
     tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
 
-    <ListView
-        android:id="@+id/listTab2"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:id="@+id/tvCurrent"
+        android:height="40dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/MidBlueBlackFont"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:text="Your current reservations"
+        >
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="42dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true">
+
+        <ListView
+            android:id="@+id/listTab2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
 </RelativeLayout>

@@ -96,8 +96,8 @@ public class CustomerMainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        MenuItem darkmode = optionsMenu.findItem(R.id.darkmode_option);
-        MenuItem lightmode = optionsMenu.findItem(R.id.lightmode_option);
+//        MenuItem darkmode = optionsMenu.findItem(R.id.darkmode_option);
+//        MenuItem lightmode = optionsMenu.findItem(R.id.lightmode_option);
 
 
         if(item.getItemId() == R.id.logout_option){
@@ -128,10 +128,7 @@ public class CustomerMainActivity extends AppCompatActivity {
 
     }
 
-    public void Show(){
-        optionsMenu.getItem(1).setVisible(true);
-        optionsMenu.getItem(0).setVisible(false);
-    }
+
 
     private void SendUserToLaunchActivity() {
         Intent launchIntent = new Intent(CustomerMainActivity.this, LaunchActivity.class);
