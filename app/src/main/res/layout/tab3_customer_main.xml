@@ -34,12 +34,22 @@
         app:cardCornerRadius="20dp"
         app:cardUseCompatPadding="true">
 
-        <ListView
-            android:id="@+id/listTab3"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swiperefresh2_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="42dp"
+            android:elevation="10dp">
+            <ListView
+                android:id="@+id/listTab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-            />
+                />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     </androidx.cardview.widget.CardView>
 

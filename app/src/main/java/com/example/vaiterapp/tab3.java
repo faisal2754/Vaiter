@@ -1,6 +1,7 @@
 package com.example.vaiterapp;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.vaiterapp.API.RetrofitClient;
 
@@ -34,9 +36,13 @@ public class tab3 extends Fragment {
 
     private ListAdapterTab3 listAdapter;
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.tab3_customer_main,container,false);
+
+        mSwipeRefreshLayout = rootView.findViewById(R.id.swiperefresh2_items);
 
         listView = rootView.findViewById(R.id.listTab3);
 
@@ -44,6 +50,25 @@ public class tab3 extends Fragment {
         listView.setAdapter(listAdapter);
 
         getOrders();
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to make your refresh action
+                // CallYourRefreshingMethod();
+
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                    }
+                }, 1000);
+            }
+        });
 
         return rootView;
     }

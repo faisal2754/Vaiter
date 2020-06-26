@@ -74,7 +74,6 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="false"
-
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
