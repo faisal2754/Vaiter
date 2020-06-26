@@ -54,8 +54,7 @@ public class tab3 extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to make your refresh action
-                // CallYourRefreshingMethod();
+                //Add your shit here dawg
 
 
                 final Handler handler = new Handler();
