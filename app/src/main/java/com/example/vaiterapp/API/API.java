@@ -56,15 +56,27 @@ public interface API {
     );
 
     @FormUrlEncoded
-    @POST("getCurrentOrders.php")
-    Call<ResponseBody> showCurrentOrders(
+    @POST("getCustomerCurrentOrders.php")
+    Call<ResponseBody> showCustomerCurrentOrders(
             @Field("CusID") int id
     );
 
     @FormUrlEncoded
-    @POST("getOrderHistory.php")
-    Call<ResponseBody> showPastOrders(
+    @POST("getCustomerOrderHistory.php")
+    Call<ResponseBody> showCustomerPastOrders(
             @Field("CusID") int id
+    );
+
+    @FormUrlEncoded
+    @POST("getStaffCurrentOrders.php")
+    Call<ResponseBody> showStaffCurrentOrders(
+            @Field("staffID") int id
+    );
+
+    @FormUrlEncoded
+    @POST("getStaffOrderHistory.php")
+    Call<ResponseBody> showStaffPastOrders(
+            @Field("staffID") int id
     );
 
 }

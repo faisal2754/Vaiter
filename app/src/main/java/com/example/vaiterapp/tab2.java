@@ -81,7 +81,7 @@ public class tab2 extends Fragment {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getAPI()
-                .showCurrentOrders(currID);
+                .showCustomerCurrentOrders(currID);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

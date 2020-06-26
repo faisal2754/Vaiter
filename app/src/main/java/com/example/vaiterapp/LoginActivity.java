@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loadingBar.setTitle("Signing into account");
         loadingBar.setMessage("Please wait, while we are signing into your account.");
-        loadingBar.setCanceledOnTouchOutside(true);
+        loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
 
@@ -183,11 +183,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (cStaff.isChecked()){
                         editor.putBoolean("staff", true);
-                        editor.commit();
+                        editor.apply();
                         goToStaffActivity();
                     } else {
                         editor.putBoolean("staff", false);
-                        editor.commit();
+                        editor.apply();
                         goToCustomerActivity();
                     }
 
@@ -206,6 +206,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }
