@@ -31,6 +31,12 @@ public class ListAdapterTab3 extends BaseAdapter{
         return meals.size();
     }
 
+    public void clearAdapter(){
+        meals.clear();
+        dateTime.clear();
+        images.clear();
+    }
+
     @Override
     public Object getItem(int i) {
         return i;

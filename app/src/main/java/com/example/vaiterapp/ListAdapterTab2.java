@@ -26,6 +26,12 @@ public class ListAdapterTab2 extends BaseAdapter{
         this.images = images;
     }
 
+    public void clearAdapter(){
+        meals.clear();
+        dateTime.clear();
+        images.clear();
+    }
+
     @Override
     public int getCount() {
         return meals.size();

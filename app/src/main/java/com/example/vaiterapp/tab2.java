@@ -1,5 +1,6 @@
 package com.example.vaiterapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -59,7 +60,10 @@ public class tab2 extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //Add your shit here dawg
+
+                listAdapter.clearAdapter();
+                getOrders();
+                listView.setAdapter(listAdapter);
 
 
                 final Handler handler = new Handler();
@@ -119,4 +123,6 @@ public class tab2 extends Fragment {
             listAdapter.notifyDataSetChanged();
         }
     }
+
+
 }

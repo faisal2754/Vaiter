@@ -31,6 +31,12 @@ public class ListAdapterStaffTab2 extends BaseAdapter{
         return meals.size();
     }
 
+    public void clearAdapter(){
+        meals.clear();
+        names.clear();
+        dateTime.clear();
+    }
+
     @Override
     public Object getItem(int i) {
         return i;

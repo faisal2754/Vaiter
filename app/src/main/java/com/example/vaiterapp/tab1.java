@@ -186,9 +186,11 @@ public class tab1 extends Fragment implements View.OnClickListener {
                 // date picker dialog
                 Datepicker = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
+
                             @SuppressLint("SetTextI18n")
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
                                 String sMonth = Integer.toString(monthOfYear+1);
                                 String sDay = Integer.toString(dayOfMonth);
                                 String sYear = Integer.toString(year);
@@ -202,6 +204,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                                 dateChosen = sYear + "/" + (sMonth) + "/" + sDay;
                             }
                         }, year, month, day);
+                Datepicker.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 Datepicker.show();
             }
         });
@@ -386,7 +389,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     assert response.body() != null;
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
-                    Toast.makeText(getActivity(), js.getString("message"), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }

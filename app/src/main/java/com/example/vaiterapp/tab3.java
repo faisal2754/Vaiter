@@ -56,6 +56,9 @@ public class tab3 extends Fragment {
             public void onRefresh() {
                 //Add your shit here dawg
 
+                listAdapter.clearAdapter();
+                getOrders();
+                listView.setAdapter(listAdapter);
 
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {

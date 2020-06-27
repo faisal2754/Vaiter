@@ -56,8 +56,9 @@ public class StaffTab2 extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //Add your shit here dawg
-
+                listAdapter.clearAdapter();
+                getStaffOrders();
+                listView.setAdapter(listAdapter);
 
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
