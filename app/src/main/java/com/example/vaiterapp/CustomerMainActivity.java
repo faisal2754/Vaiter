@@ -125,7 +125,6 @@ public class CustomerMainActivity extends AppCompatActivity {
 //            default:
 //                return super.onOptionsItemSelected(item);
 //        }
-
     }
 
 

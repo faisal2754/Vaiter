@@ -174,6 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                     //Toast.makeText(LoginActivity.this, ""+currUserID, Toast.LENGTH_LONG).show();
 
                     SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("fname", currUserName);
                     editor.putString("email",email);
                     editor.putString("password",pass);
                     editor.putInt("userID", currUserID);
@@ -189,8 +190,6 @@ public class LoginActivity extends AppCompatActivity {
                         editor.apply();
                         goToCustomerActivity();
                     }
-
-
 
 
                 } else {

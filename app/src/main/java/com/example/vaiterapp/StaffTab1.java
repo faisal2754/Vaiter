@@ -43,7 +43,7 @@ public class StaffTab1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.tab1_staff_main,container,false);
 
-        //mSwipeRefreshLayout = rootView.findViewById(R.id.swiperefresh_items);
+        mSwipeRefreshLayout = rootView.findViewById(R.id.swiperefreshstaff1_items);
 
         listView = rootView.findViewById(R.id.list_view);
 
@@ -53,7 +53,7 @@ public class StaffTab1 extends Fragment {
 
         getStaffOrders();
 
-        /*mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 //Add your shit here dawg
@@ -69,7 +69,7 @@ public class StaffTab1 extends Fragment {
                     }
                 }, 1000);
             }
-        });*/
+        });
 
         return rootView;
     }
@@ -106,6 +106,9 @@ public class StaffTab1 extends Fragment {
                 String ln = jArr.getString(i+1);
                 String meal = jArr.getString(i+2);
                 String dTime = jArr.getString(i+3);
+                fn = "Name: " + fn;
+                meal = "Meal: " + meal;
+                dTime = "Reservation: " + dTime;
                 names.add(fn+" "+ln);
                 meals.add(meal);
                 dateTime.add(dTime);

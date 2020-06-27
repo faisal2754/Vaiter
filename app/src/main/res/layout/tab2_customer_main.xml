@@ -5,7 +5,7 @@
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
+    tools:context=".tab2">
 
 
 
@@ -37,7 +37,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginBottom="42dp"
             app:cardElevation="8dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="10dp"
             app:cardUseCompatPadding="true">
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"

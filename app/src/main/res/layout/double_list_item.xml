@@ -22,6 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
+
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/tab2icon"
         android:layout_toRightOf="@+id/tab2icon"

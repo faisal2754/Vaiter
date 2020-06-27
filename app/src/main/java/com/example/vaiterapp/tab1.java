@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -51,6 +54,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
     Button confirmOrder;
 
     private int currID = MainActivity.prf1.getInt("userID", 27);
+    private String cussName = MainActivity.prf1.getString("fname", "");
 
     private String mealChosen;
     private String dateChosen;
@@ -63,6 +67,10 @@ public class tab1 extends Fragment implements View.OnClickListener {
     private ArrayList<String> listItems;
     private Button btnOrder;
     private boolean menuList = false;
+
+    private TextView tvHeading;
+    private TextView tvWelcome;
+    private ImageView LogoCuss;
 
     int[] rImages = {R.drawable.ob, R.drawable.mcdonalds};
     String[] rNames = {"Ocean Basket", "McDonalds"};
@@ -101,6 +109,14 @@ public class tab1 extends Fragment implements View.OnClickListener {
         tv.setText("WHATSUP");
         tv.setTextColor(Color.RED);*/
         btnOrder = rootView.findViewById(R.id.btnOrder);
+
+        tvHeading = (TextView) rootView.findViewById(R.id.heading_view);
+        LogoCuss = (ImageView) rootView.findViewById(R.id.logo_cuss_main);
+        tvWelcome = (TextView) rootView.findViewById(R.id.welcome_view);
+
+
+        tvWelcome.setText("Welcome, " + cussName);
+
 
         confirmOrder = rootView.findViewById(R.id.btnConfirmOrder);
         confirmOrder.setVisibility(View.GONE);
@@ -277,6 +293,13 @@ public class tab1 extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 list_view.setVisibility(View.VISIBLE);
                 btnOrder.setVisibility(View.GONE);
+                tvHeading.setVisibility(View.VISIBLE);
+                tvHeading.setText("Where would you like to eat?");
+
+                tvWelcome.setVisibility(View.GONE);
+                LogoCuss.setVisibility(View.GONE);
+
+
             }
         });
 

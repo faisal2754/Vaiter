@@ -4,10 +4,48 @@
     android:id="@+id/rLayoutStaffTab2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    tools:context=".StaffTab2">
 
-    <ListView
-        android:id="@+id/list_view"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:height="40dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:text="Customer reservations history"
+        >
+
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+
+        android:layout_marginTop="40dp"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardUseCompatPadding="true">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swiperefreshstaff2_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            >
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </RelativeLayout>

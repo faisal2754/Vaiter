@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
+    tools:context=".tab1">
 
     <Button
         android:id="@+id/btnOrder"
@@ -15,9 +15,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="189dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="400dp"
         android:layout_weight="1"
-        android:background="@drawable/buttonstylegradient"
+        android:background="@drawable/rounded_edittext"
         android:text="Create an order"
         android:textSize="18sp"
         android:visibility="visible" />
@@ -25,17 +26,48 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/welcome_view"
+        android:height="40dp"
+        android:layout_marginTop="35dp"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="@color/MidBlueBlackFont"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:text=""
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading_view"
         android:height="40dp"
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:textAlignment="center"
         android:textColor="@color/MidBlueBlackFont"
         android:gravity="center"
+        android:visibility="gone"
         android:textStyle="normal"
         android:text="Where would you like to eat?"
         >
 
     </TextView>
+
+
+    <ImageView
+        android:id="@+id/logo_cuss_main"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="110dp"
+        app:srcCompat="@drawable/logo">
+
+    </ImageView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,9 +75,10 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
+
         android:layout_marginTop="40dp"
         app:cardElevation="8dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true">
         <ListView
             android:id="@+id/list_view"
