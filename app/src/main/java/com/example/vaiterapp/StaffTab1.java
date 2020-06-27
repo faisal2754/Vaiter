@@ -51,7 +51,7 @@ public class StaffTab1 extends Fragment {
         listView.setAdapter(listAdapter);
 
 
-        //getStaffOrders();
+        getStaffOrders();
 
         /*mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

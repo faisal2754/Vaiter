@@ -4,7 +4,7 @@
     android:id="@+id/rLayoutStaffTab2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.vaiterapp.ui.main.PlaceholderFragment">
+>
 
     <ListView
         android:id="@+id/list_view"

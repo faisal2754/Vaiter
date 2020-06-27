@@ -105,9 +105,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login(){
 
-
-        String email = eEmail.getText().toString();
-        String pass = ePass.getText().toString();
+        String email = eEmail.getText().toString().trim();
+        String pass = ePass.getText().toString().trim();
 
         pref = getSharedPreferences("user_details",MODE_PRIVATE);
 
