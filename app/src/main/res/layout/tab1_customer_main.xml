@@ -56,6 +56,18 @@
 
     </TextView>
 
+    <ImageView
+        android:id="@+id/res_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="125dp"
+        >
+
+    </ImageView>
+
 
     <ImageView
         android:id="@+id/logo_cuss_main"
@@ -118,7 +130,7 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="190dp"
         android:background="@drawable/rounded_edittext"
         android:hint="Select date"
         android:visibility="gone" />
@@ -156,7 +168,22 @@
         android:layout_alignBottom="@+id/in_time"
         android:layout_marginTop="77dp"
         android:layout_marginBottom="-126dp"
+
         android:text="Confirm Reservation"
         android:textColor="@color/colorPrimaryDark"
         tools:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cancelOrder"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="460dp"
+
+        android:backgroundTint="@color/MidBlueBlackFont"
+
+        app:srcCompat="@drawable/cross" />
 </RelativeLayout>

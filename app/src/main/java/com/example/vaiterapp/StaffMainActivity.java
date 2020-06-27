@@ -40,6 +40,12 @@ public class StaffMainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Vaiter for Staff");
+        getSupportActionBar().setLogo(R.drawable.logo_small);
+
+        tabs.getTabAt(0).setIcon(R.drawable.reservations_colour);
+        tabs.getTabAt(1).setIcon(R.drawable.history_colour);
+
+
 
 
 
@@ -93,6 +99,9 @@ public class StaffMainActivity extends AppCompatActivity {
 //
 
         }
+        else if(item.getItemId() == R.id.about_option){
+            openDialog();
+        }
         return true;
 //        switch (item.getItemId()){
 //            case R.id.logout_option:
@@ -106,6 +115,10 @@ public class StaffMainActivity extends AppCompatActivity {
 
     }
 
+    private void openDialog() {
+        AboutDialog aboutDialog = new AboutDialog();
+        aboutDialog.show(getSupportFragmentManager(), "about dialog");
+    }
 
 
     private void SendUserToLaunchActivity() {

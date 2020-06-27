@@ -5,21 +5,41 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <item
-        android:title="Dark Mode"
-        android:icon="@drawable/darkmode"
-        android:visible="true"
-        android:id="@+id/darkmode_option"
-        app:showAsAction="never"
-        >
+        android:id="@+id/theme_option"
+        android:title="Theme"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:title="Dark Mode"
+                android:icon="@drawable/darkmode"
+                android:visible="true"
+                android:id="@+id/darkmode_option"
+                app:showAsAction="never"
+                >
+            </item>
+
+            <item
+                android:title="Light Mode"
+                android:icon="@drawable/lightmode"
+                android:visible="true"
+                android:id="@+id/lightmode_option"
+                app:showAsAction="never"
+                >
+            </item>
+        </menu>
     </item>
 
+
+
+
+
     <item
-        android:title="Light Mode"
-        android:icon="@drawable/lightmode"
-        android:visible="true"
-        android:id="@+id/lightmode_option"
+        android:title="About"
+        android:icon="@drawable/ic_menu"
+        android:id="@+id/about_option"
         app:showAsAction="never"
         >
+
     </item>
 
     <item
@@ -28,6 +48,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/logout_option"
     app:showAsAction="never"
     >
+
 </item>
 
 

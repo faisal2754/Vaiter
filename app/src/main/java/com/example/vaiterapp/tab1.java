@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.vaiterapp.API.RetrofitClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,7 +77,8 @@ public class tab1 extends Fragment implements View.OnClickListener {
     String[] rNames = {"Ocean Basket", "McDonalds"};
     ListAdapterTab1 listAdapterTab1;
 
-
+    private FloatingActionButton cancel;
+    private ImageView ResLogo;
 
     /*private RecyclerView recyclerview, recyclerview_menu;
     private MyAdapter rAdapter,menuAdapter;
@@ -114,9 +116,19 @@ public class tab1 extends Fragment implements View.OnClickListener {
         LogoCuss = (ImageView) rootView.findViewById(R.id.logo_cuss_main);
         tvWelcome = (TextView) rootView.findViewById(R.id.welcome_view);
 
+        cancel = (FloatingActionButton) rootView.findViewById(R.id.cancelOrder);
+        ResLogo = (ImageView) rootView.findViewById(R.id.res_logo);
 
         tvWelcome.setText("Welcome, " + cussName);
 
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetFragment();
+                Toast.makeText(getActivity(), "Order cancelled", Toast.LENGTH_SHORT).show();
+                cancel.setVisibility(View.GONE);
+            }
+        });
 
         confirmOrder = rootView.findViewById(R.id.btnConfirmOrder);
         confirmOrder.setVisibility(View.GONE);
@@ -239,15 +251,32 @@ public class tab1 extends Fragment implements View.OnClickListener {
             list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
                     if (!menuList){
-                        Toast.makeText(getActivity(), ""+adapterView.getItemIdAtPosition(i), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), ""+rNames[i], Toast.LENGTH_SHORT).show();
+                        tvHeading.setText("What would you like to eat?");
+
                         list_view.setAdapter(adapter);
                         getMeals(rNames[i]);
+                        if(rNames[i].equals("Ocean Basket")){
+                            ResLogo.setImageResource(R.drawable.ob3);
+
+                        }
+                        else if(rNames[i].equals("McDonalds")){
+                            ResLogo.setImageResource(R.drawable.mcdonalds3);
+
+                        }
                         setMenuBool();
-                    } else {
+                    }
+                    else {
                         setMenuBool();
                         mealChosen = (String) adapterView.getItemAtPosition(i);
                         Toast.makeText(getActivity(), mealChosen, Toast.LENGTH_SHORT).show();
+                        tvHeading.setText("When would you like to eat?");
+                        ResLogo.setVisibility(View.VISIBLE);
+
+
+                        cancel.setVisibility(View.VISIBLE);
                         list_view.setVisibility(View.GONE);
                         TimeText.setVisibility(View.VISIBLE);
                         DateText.setVisibility(View.VISIBLE);
@@ -357,7 +386,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     assert response.body() != null;
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
-                    //Toast.makeText(getActivity(), js.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }

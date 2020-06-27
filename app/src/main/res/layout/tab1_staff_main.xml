@@ -16,7 +16,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
         android:textStyle="normal"
-        android:text="Current customer reservations"
+        android:text="Current Customer Reservations"
         >
 
     </TextView>
