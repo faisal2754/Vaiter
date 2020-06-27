@@ -3,11 +3,14 @@ package com.example.vaiterapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +36,10 @@ public class StaffSignupActivity extends AppCompatActivity {
     private Button btnSignup;
     public TextView txtAlreadyM;
 
+    private ImageView iTwitter;
+    private ImageView iInstagram;
+    private ImageView iFacebook;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //what
@@ -50,6 +57,40 @@ public class StaffSignupActivity extends AppCompatActivity {
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
 
         txtAlreadyM.setOnClickListener(v -> LoginClick());
+
+        iTwitter = (ImageView) findViewById(R.id.twitter);
+        iInstagram = (ImageView) findViewById(R.id.instagram);
+        iFacebook = (ImageView) findViewById(R.id.facebook);
+
+        iTwitter.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://twitter.com/AppVaiter"));
+                startActivity(intent);
+            }
+        });
+
+        iInstagram.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.instagram.com/vaiterapp/"));
+                startActivity(intent);
+            }
+        });
+
+        iFacebook.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.facebook.com/vaiter.app.3"));
+                startActivity(intent);
+            }
+        });
 
         List<String> spinnerArray =  new ArrayList<String>();
 

@@ -1,11 +1,14 @@
 package com.example.vaiterapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,10 @@ public class CustomerSignupActivity extends AppCompatActivity {
     private Button btnSignup;
     private TextView txtAM;
 
+    private ImageView iTwitter;
+    private ImageView iInstagram;
+    private ImageView iFacebook;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,40 @@ public class CustomerSignupActivity extends AppCompatActivity {
 
         btnSignup = findViewById(R.id.btnCusSignUp);
         txtAM = findViewById(R.id.textAlreadyMember);
+
+        iTwitter = (ImageView) findViewById(R.id.twitter);
+        iInstagram = (ImageView) findViewById(R.id.instagram);
+        iFacebook = (ImageView) findViewById(R.id.facebook);
+
+        iTwitter.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://twitter.com/AppVaiter"));
+                startActivity(intent);
+            }
+        });
+
+        iInstagram.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.instagram.com/vaiterapp/"));
+                startActivity(intent);
+            }
+        });
+
+        iFacebook.setOnClickListener(new ImageView.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.facebook.com/vaiter.app.3"));
+                startActivity(intent);
+            }
+        });
 
         btnSignup.setOnClickListener(v -> signUp());
         txtAM.setOnClickListener(v -> LoginClick());
