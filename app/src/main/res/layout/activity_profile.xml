@@ -95,7 +95,7 @@
             android:gravity="center"
             android:visibility="visible"
             android:textStyle="normal"
-            android:text="Reset Password"
+            android:text="Change Password"
             >
 
         </TextView>
