@@ -83,21 +83,7 @@
 
         </TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/change_pass_view"
-            android:height="45dp"
-            android:layout_marginTop="120dp"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:textColor="@color/MidBlueBlackFont"
-            android:gravity="center"
-            android:visibility="visible"
-            android:textStyle="normal"
-            android:text="Change Password"
-            >
-        </TextView>
+
 
         <Button
             android:id="@+id/btnSave"
@@ -110,7 +96,7 @@
             android:layout_marginTop="80dp"
             android:layout_weight="1"
             android:background="@drawable/buttonstylegradient"
-            android:text="Save"
+            android:text="OK"
             android:textSize="18sp"
             android:visibility="visible" />
 

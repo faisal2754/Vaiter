@@ -117,8 +117,8 @@ public class StaffSignupActivity extends AppCompatActivity {
     }
 
     public void LoginClick(){
-        Intent staffIntent = new Intent(StaffSignupActivity.this, LoginActivity.class);
-        startActivity(staffIntent);
+        Intent loginIntent = new Intent(StaffSignupActivity.this, LoginActivity.class);
+        startActivity(loginIntent);
     }
 
     public void goToStaffActivity(){
@@ -195,8 +195,9 @@ public class StaffSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
-                        loadingBar.dismiss();
+                        Toast.makeText(StaffSignupActivity.this, "Successfully created new account", Toast.LENGTH_SHORT).show();
                         LoginClick();
+                        loadingBar.dismiss();
                     }
                     loadingBar.dismiss();
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();

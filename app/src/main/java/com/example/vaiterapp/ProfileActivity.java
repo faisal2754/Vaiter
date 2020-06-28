@@ -25,7 +25,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView tvName;
     private TextView tvEmail;
-    private TextView tvChangePass;
 
     private Button Save;
 
@@ -39,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         tvName = findViewById(R.id.name_view);
         tvEmail = findViewById(R.id.email_view);
-        tvChangePass = findViewById(R.id.change_pass_view);
+
         Save = findViewById(R.id.btnSave);
 
         tvName.setText(tvName.getText() + cussName);
@@ -53,12 +52,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        tvChangePass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
 //        ProfilePic = (ImageView) findViewById(R.id.profile_pic);
