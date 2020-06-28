@@ -36,6 +36,7 @@ import com.example.vaiterapp.API.RetrofitClient;
 public class LoginActivity extends AppCompatActivity {
 
     private TextView txtLaunch;
+    private TextView tvForgotPass;
     private ProgressDialog loadingBar;
     private EditText eEmail, ePass;
     private Button btnLogin;
@@ -65,12 +66,22 @@ public class LoginActivity extends AppCompatActivity {
         txtLaunch = findViewById(R.id.textViewNoAcc);
         txtLaunch.setOnClickListener(v -> SignupClick());
 
+        tvForgotPass = findViewById(R.id.forgot_pass);
+
+
         eEmail = findViewById(R.id.LEmail);
         ePass = findViewById(R.id.LPass);
 
         iTwitter = (ImageView) findViewById(R.id.twitter);
         iInstagram = (ImageView) findViewById(R.id.instagram);
         iFacebook = (ImageView) findViewById(R.id.facebook);
+
+        tvForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         iTwitter.setOnClickListener(new ImageView.OnClickListener() {
             public void onClick(View v) {

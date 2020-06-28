@@ -18,18 +18,19 @@ import java.io.InputStream;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private static final int GALLERY_REQUEST_CODE = 123;
+    //private static final int GALLERY_REQUEST_CODE = 123;
 
     private String cussName = MainActivity.prf1.getString("fname", "");
     private String email = MainActivity.prf1.getString("email", "");
 
     private TextView tvName;
     private TextView tvEmail;
+    private TextView tvChangePass;
 
     private Button Save;
 
 
-    ImageView ProfilePic;
+    //ImageView ProfilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         tvName = findViewById(R.id.name_view);
         tvEmail = findViewById(R.id.email_view);
+        tvChangePass = findViewById(R.id.change_pass_view);
         Save = findViewById(R.id.btnSave);
 
         tvName.setText(tvName.getText() + cussName);
@@ -48,6 +50,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent staffIntent = new Intent(ProfileActivity.this, CustomerMainActivity.class);
                 startActivity(staffIntent);
+            }
+        });
+
+        tvChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -64,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
 //
 //            }
 //        });
-        
+
     }
 
 //    @Override

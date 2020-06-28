@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginBottom="70dp"
+                android:layout_marginBottom="50dp"
                 android:text="Login to your account"
                 android:textColor="@color/white"
                 android:gravity="center"
@@ -129,7 +129,16 @@
                 android:text="Don't have an account? Click here."
                 android:layout_gravity="center"
                 android:textColor="#fff"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:id="@+id/forgot_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgotten password?"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                android:layout_marginBottom="20dp" />
 
 
 
