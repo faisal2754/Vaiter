@@ -18,7 +18,7 @@
         android:textColor="@color/MidBlueBlackFont"
         android:gravity="center"
         android:textStyle="normal"
-        android:text="Your previous reservations"
+        android:text="Your Reservations History"
         >
     </TextView>
 

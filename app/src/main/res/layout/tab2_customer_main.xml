@@ -21,7 +21,7 @@
             android:textColor="@color/MidBlueBlackFont"
             android:gravity="center"
             android:textStyle="normal"
-            android:text="Your current reservations"
+            android:text="Your Current Reservations"
             >
         </TextView>
 

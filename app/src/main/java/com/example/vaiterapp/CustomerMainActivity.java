@@ -118,6 +118,9 @@ public class CustomerMainActivity extends AppCompatActivity {
         else if(item.getItemId() == R.id.about_option){
             openDialog();
         }
+        else if(item.getItemId() == R.id.profile_option){
+            ProfileClick();
+        }
         return true;
 //        switch (item.getItemId()){
 //            case R.id.logout_option:
@@ -133,6 +136,11 @@ public class CustomerMainActivity extends AppCompatActivity {
     private void openDialog() {
         AboutDialog aboutDialog = new AboutDialog();
         aboutDialog.show(getSupportFragmentManager(), "about dialog");
+    }
+
+    public void ProfileClick(){
+        Intent staffIntent = new Intent(CustomerMainActivity.this, ProfileActivity.class);
+        startActivity(staffIntent);
     }
 
 

@@ -279,7 +279,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                         ResLogo.setVisibility(View.VISIBLE);
 
 
-                        cancel.setVisibility(View.VISIBLE);
+
                         list_view.setVisibility(View.GONE);
                         TimeText.setVisibility(View.VISIBLE);
                         DateText.setVisibility(View.VISIBLE);
@@ -328,6 +328,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                 tvHeading.setVisibility(View.VISIBLE);
                 tvHeading.setText("Where would you like to eat?");
 
+                cancel.setVisibility(View.VISIBLE);
                 tvWelcome.setVisibility(View.GONE);
                 LogoCuss.setVisibility(View.GONE);
 
