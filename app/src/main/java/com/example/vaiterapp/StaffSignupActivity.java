@@ -2,6 +2,7 @@ package com.example.vaiterapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class StaffSignupActivity extends AppCompatActivity {
     private Button btnSignup;
     public TextView txtAlreadyM;
 
+    private ProgressDialog loadingBar;
+
     private ImageView iTwitter;
     private ImageView iInstagram;
     private ImageView iFacebook;
@@ -53,6 +56,8 @@ public class StaffSignupActivity extends AppCompatActivity {
         eCpass = findViewById(R.id.staffSPassC);
 
         btnSignup = findViewById(R.id.btnStaffSignUp);
+
+        loadingBar = new ProgressDialog(this);
 
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
 
@@ -172,6 +177,11 @@ public class StaffSignupActivity extends AppCompatActivity {
             return;
         }
 
+        loadingBar.setTitle("Registering account");
+        loadingBar.setMessage("Please wait, while we are registering your account.");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getAPI()
@@ -185,16 +195,20 @@ public class StaffSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
+                        loadingBar.dismiss();
                         LoginClick();
                     }
+                    loadingBar.dismiss();
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
+                    loadingBar.dismiss();
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                loadingBar.dismiss();
                 Toast.makeText(StaffSignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

@@ -1,5 +1,6 @@
 package com.example.vaiterapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class CustomerSignupActivity extends AppCompatActivity {
     private ImageView iInstagram;
     private ImageView iFacebook;
 
+    private ProgressDialog loadingBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,8 @@ public class CustomerSignupActivity extends AppCompatActivity {
         eEmail = findViewById(R.id.cusSEmail);
         ePass = findViewById(R.id.cusSPass);
         eCpass = findViewById(R.id.cusSPassC);
+
+        loadingBar = new ProgressDialog(this);
 
         btnSignup = findViewById(R.id.btnCusSignUp);
         txtAM = findViewById(R.id.textAlreadyMember);
@@ -152,6 +157,11 @@ public class CustomerSignupActivity extends AppCompatActivity {
             return;
         }
 
+        loadingBar.setTitle("Registering account");
+        loadingBar.setMessage("Please wait, while we are registering your account.");
+        loadingBar.setCanceledOnTouchOutside(false);
+        loadingBar.show();
+
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getAPI()
@@ -165,16 +175,20 @@ public class CustomerSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
+                        loadingBar.dismiss();
                         LoginClick();
                     }
+                    loadingBar.dismiss();
                     Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
+                    loadingBar.dismiss();
                     e.printStackTrace();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                loadingBar.dismiss();
                 Toast.makeText(CustomerSignupActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 Log.d("myTag", t.getMessage());
             }
