@@ -15,10 +15,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         android:layout_marginTop="400dp"
         android:layout_weight="1"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/buttonstylegradient"
         android:text="Create an order"
         android:textSize="18sp"
         android:visibility="visible" />
@@ -160,7 +160,7 @@
 
     <Button
         android:id="@+id/btnConfirmOrder"
-        android:background="@drawable/rounded_edittext"
+        android:background="@drawable/buttonstylegradient"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/in_time"
@@ -171,7 +171,7 @@
         android:layout_marginBottom="-126dp"
 
         android:text="Confirm Reservation"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/white"
         tools:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -180,7 +180,7 @@
         android:visibility="gone"
 
         android:layout_height="wrap_content"
-
+        app:elevation="10dp"
         android:layout_marginLeft="340dp"
         android:layout_marginTop="460dp"
 

@@ -113,6 +113,15 @@ public class tab3 extends Fragment {
                 } else if (resName.equals("McDonalds")){
                     mImages.add(R.drawable.mcdonalds);
                 }
+                else if (resName.equals("Pizza Hut")){
+                    mImages.add(R.drawable.pizzahut);
+                }
+                else if (resName.equals("Lal Qila")){
+                    mImages.add(R.drawable.lalqila);
+                }
+                else if (resName.equals("Nandos")){
+                    mImages.add(R.drawable.nandos);
+                }
             }
             listAdapter.notifyDataSetChanged();
         }
