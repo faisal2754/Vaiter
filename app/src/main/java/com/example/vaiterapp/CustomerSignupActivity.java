@@ -1,5 +1,6 @@
 package com.example.vaiterapp;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -176,7 +177,9 @@ public class CustomerSignupActivity extends AppCompatActivity {
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
                         loadingBar.dismiss();
-                        LoginClick();
+                        //LoginClick();
+                        VerificationDialog verificationDialog = new VerificationDialog();
+                        verificationDialog.show(getSupportFragmentManager(), "verification dialog");
                     }
                     loadingBar.dismiss();
                     Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();

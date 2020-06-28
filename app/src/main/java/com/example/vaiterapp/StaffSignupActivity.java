@@ -195,9 +195,11 @@ public class StaffSignupActivity extends AppCompatActivity {
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
                     if (!js.getBoolean("error")){
-                        Toast.makeText(StaffSignupActivity.this, "Successfully created new account", Toast.LENGTH_SHORT).show();
-                        LoginClick();
+
+                        //LoginClick();
                         loadingBar.dismiss();
+                        VerificationDialog verificationDialog = new VerificationDialog();
+                        verificationDialog.show(getSupportFragmentManager(), "verification dialog");
                     }
                     loadingBar.dismiss();
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
