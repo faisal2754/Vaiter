@@ -50,7 +50,7 @@
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:textColorHint="@color/white_pressed"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="10dp"
                 android:drawableStart="@drawable/ic_user"
                 android:paddingLeft="10dp"/>
 
@@ -68,7 +68,7 @@
                 android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:textColorHint="@color/white_pressed"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="10dp"
                 android:drawableStart="@drawable/ic_user"
                 android:paddingLeft="10dp"/>
 
@@ -95,7 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:hint="Password"
+
+                app:hintEnabled="false"
 
                 android:textColorHint="@color/white_pressed"
                 android:textColor="@color/white"
@@ -110,7 +111,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:drawableLeft="@drawable/ic_lock"
                     android:ems="10"
-
+                    android:hint="Password"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/white_pressed"
@@ -127,8 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:hint="Confirm Password"
-
+                app:hintEnabled="false"
                 android:textColorHint="@color/white_pressed"
                 android:textColor="@color/white"
                 app:passwordToggleEnabled="true"
@@ -141,7 +141,7 @@
                     android:background="@drawable/rounded_edittext"
                     android:drawableLeft="@drawable/ic_lock"
                     android:ems="10"
-
+                    android:hint="Confirm Password"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textColorHint="@color/white_pressed"
