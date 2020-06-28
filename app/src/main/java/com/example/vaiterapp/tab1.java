@@ -73,8 +73,8 @@ public class tab1 extends Fragment implements View.OnClickListener {
     private TextView tvWelcome;
     private ImageView LogoCuss;
 
-    int[] rImages = {R.drawable.ob, R.drawable.mcdonalds};
-    String[] rNames = {"Ocean Basket", "McDonalds"};
+    int[] rImages = {R.drawable.ob, R.drawable.mcdonalds, R.drawable.pizzahut, R.drawable.lalqila, R.drawable.nandos};
+    String[] rNames = {"Ocean Basket", "McDonalds", "Pizza Hut", "Lal Qila", "Nandos"};
     ListAdapterTab1 listAdapterTab1;
 
     private FloatingActionButton cancel;
@@ -269,6 +269,19 @@ public class tab1 extends Fragment implements View.OnClickListener {
                             ResLogo.setImageResource(R.drawable.mcdonalds3);
 
                         }
+                        else if(rNames[i].equals("Pizza Hut")){
+                            ResLogo.setImageResource(R.drawable.pizzahut);
+
+                        }
+                        else if(rNames[i].equals("Lal Qila")){
+                            ResLogo.setImageResource(R.drawable.lalqila);
+
+                        }
+                        else if(rNames[i].equals("Nandos")){
+                            ResLogo.setImageResource(R.drawable.nandos);
+
+                        }
+
                         setMenuBool();
                     }
                     else {
@@ -390,7 +403,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     assert response.body() != null;
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
-                    Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }

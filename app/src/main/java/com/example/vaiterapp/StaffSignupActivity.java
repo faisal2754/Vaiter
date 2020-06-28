@@ -102,6 +102,10 @@ public class StaffSignupActivity extends AppCompatActivity {
         spinnerArray.add("Select your restaurant");
         spinnerArray.add("McDonalds");
         spinnerArray.add("Ocean Basket");
+        spinnerArray.add("Pizza Hut");
+        spinnerArray.add("Lal Qila");
+        spinnerArray.add("Nandos");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item,spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -87,8 +87,9 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-
+        android:elevation="8dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="42dp"
         app:cardElevation="8dp"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true">

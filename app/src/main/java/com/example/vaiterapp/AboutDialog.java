@@ -15,7 +15,7 @@ public class AboutDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setIcon(R.drawable.logo);
         builder.setTitle("About")
-                .setMessage("Copyright © 2020 Vaiter Inc. All rights reserved. Created by: Faisal Jr Saleem, Ghulame Mujtaba Arbi. Powered by Pravesh.")
+                .setMessage("Copyright © 2020 Vaiter Inc. All rights reserved. Created by: Faisal Jr Saleem, Ghulame Mujtaba Arbi. Powered by Vaiter.")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
