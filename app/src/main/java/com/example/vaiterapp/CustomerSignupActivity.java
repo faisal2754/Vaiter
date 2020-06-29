@@ -180,6 +180,7 @@ public class CustomerSignupActivity extends AppCompatActivity {
                         //LoginClick();
                         VerificationDialog verificationDialog = new VerificationDialog();
                         verificationDialog.show(getSupportFragmentManager(), "verification dialog");
+                        verificationDialog.setCancelable(false);
                     }
                     loadingBar.dismiss();
                     Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();

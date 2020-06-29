@@ -204,6 +204,8 @@ public class StaffSignupActivity extends AppCompatActivity {
                         loadingBar.dismiss();
                         VerificationDialog verificationDialog = new VerificationDialog();
                         verificationDialog.show(getSupportFragmentManager(), "verification dialog");
+                        verificationDialog.setCancelable(false);
+
                     }
                     loadingBar.dismiss();
                     Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();

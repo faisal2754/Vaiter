@@ -140,7 +140,10 @@ public class tab1 extends Fragment implements View.OnClickListener {
                 } else {
                     dateTime = dateChosen + " " + timeChosen;
                     createOrder(mealChosen, dateTime, currID);
-                    resetFragment();
+
+                    OrderDialog orderDialog = new OrderDialog();
+                    orderDialog.show(getChildFragmentManager(), "order dialog");
+                    orderDialog.setCancelable(false);
                     }
             }
         });
@@ -403,7 +406,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
                     assert response.body() != null;
                     String s = response.body().string();
                     JSONObject js = new JSONObject(s);
-                    //Toast.makeText(getContext(), js.getString("message"), Toast.LENGTH_LONG).show();
+
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
@@ -411,7 +414,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -433,7 +436,7 @@ public class tab1 extends Fragment implements View.OnClickListener {
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
