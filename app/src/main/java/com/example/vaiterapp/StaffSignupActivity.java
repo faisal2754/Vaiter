@@ -181,6 +181,8 @@ public class StaffSignupActivity extends AppCompatActivity {
             return;
         }
 
+
+
         loadingBar.setTitle("Registering account");
         loadingBar.setMessage("Please wait, while we are registering your account.");
         loadingBar.setCanceledOnTouchOutside(false);
