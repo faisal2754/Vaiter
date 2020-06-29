@@ -123,8 +123,8 @@ public class StaffMainActivity extends AppCompatActivity {
         aboutDialog.show(getSupportFragmentManager(), "about dialog");
     }
 
-    public void ProfileClick(){
-        Intent staffIntent = new Intent(StaffMainActivity.this, ProfileActivity.class);
+    private void ProfileClick(){
+        Intent staffIntent = new Intent(StaffMainActivity.this, ProfileActivityStaff.class);
         startActivity(staffIntent);
     }
 

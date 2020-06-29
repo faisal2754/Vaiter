@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+
+    tools:context="com.example.vaiterapp.ProfileActivityStaff">
+
+    <ImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/logo">
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heading_view"
+        android:height="45dp"
+        android:layout_marginTop="320dp"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        android:textColor="@color/MidBlueBlackFont"
+        android:gravity="center"
+        android:visibility="visible"
+        android:textStyle="normal"
+        android:text="Profile"
+        >
+
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+
+        android:layout_marginTop="370dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_view1"
+            android:height="45dp"
+            android:layout_marginTop="0dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/MidBlueBlackFont"
+            android:gravity="center"
+            android:visibility="visible"
+            android:textStyle="normal"
+            android:text="Name: "
+            >
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_view1"
+            android:height="45dp"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/MidBlueBlackFont"
+            android:gravity="center"
+            android:visibility="visible"
+            android:textStyle="normal"
+            android:text="Email: "
+            >
+
+        </TextView>
+
+
+
+        <Button
+            android:id="@+id/btnSave1"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonstylegradient"
+            android:text="OK"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

@@ -138,7 +138,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         aboutDialog.show(getSupportFragmentManager(), "about dialog");
     }
 
-    public void ProfileClick(){
+    private void ProfileClick(){
         Intent staffIntent = new Intent(CustomerMainActivity.this, ProfileActivity.class);
         startActivity(staffIntent);
     }

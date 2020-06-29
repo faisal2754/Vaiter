@@ -8,6 +8,7 @@
         android:label="Vaiter"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivityStaff"></activity>
         <activity
             android:name=".StaffMainActivity"
             android:label="@string/title_activity_staff_main"
