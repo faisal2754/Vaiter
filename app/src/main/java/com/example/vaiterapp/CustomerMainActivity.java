@@ -57,7 +57,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Vaiter");
-        getSupportActionBar().setLogo(R.drawable.logo_small);
+        getSupportActionBar().setLogo(R.drawable.logo_50);
 
 
         tabs.getTabAt(0).setIcon(R.drawable.home);

@@ -40,7 +40,7 @@ public class StaffMainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Vaiter for Staff");
-        getSupportActionBar().setLogo(R.drawable.logo_small);
+        getSupportActionBar().setLogo(R.drawable.logo_50);
 
         tabs.getTabAt(0).setIcon(R.drawable.reservations_colour);
         tabs.getTabAt(1).setIcon(R.drawable.history_colour);
