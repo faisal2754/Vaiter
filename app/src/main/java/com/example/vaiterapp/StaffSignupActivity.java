@@ -208,7 +208,7 @@ public class StaffSignupActivity extends AppCompatActivity {
 
                     }
                     loadingBar.dismiss();
-                    Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(StaffSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     loadingBar.dismiss();
                     e.printStackTrace();
