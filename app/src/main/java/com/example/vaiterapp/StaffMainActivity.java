@@ -102,6 +102,9 @@ public class StaffMainActivity extends AppCompatActivity {
         else if(item.getItemId() == R.id.about_option){
             openDialog();
         }
+        else if(item.getItemId() == R.id.profile_option){
+            ProfileClick();
+        }
         return true;
 //        switch (item.getItemId()){
 //            case R.id.logout_option:
@@ -120,6 +123,10 @@ public class StaffMainActivity extends AppCompatActivity {
         aboutDialog.show(getSupportFragmentManager(), "about dialog");
     }
 
+    public void ProfileClick(){
+        Intent staffIntent = new Intent(StaffMainActivity.this, ProfileActivity.class);
+        startActivity(staffIntent);
+    }
 
     private void SendUserToLaunchActivity() {
         Intent launchIntent = new Intent(StaffMainActivity.this, LaunchActivity.class);
