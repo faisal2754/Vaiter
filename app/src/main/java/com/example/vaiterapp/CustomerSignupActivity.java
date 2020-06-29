@@ -184,7 +184,7 @@ public class CustomerSignupActivity extends AppCompatActivity {
                         verificationDialog.setCancelable(false);
                     }
                     loadingBar.dismiss();
-                    //Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CustomerSignupActivity.this, js.getString("message"), Toast.LENGTH_LONG).show();
                 } catch (IOException | JSONException e) {
                     loadingBar.dismiss();
                     e.printStackTrace();
