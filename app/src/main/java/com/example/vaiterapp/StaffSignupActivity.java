@@ -59,6 +59,7 @@ public class StaffSignupActivity extends AppCompatActivity {
 
         loadingBar = new ProgressDialog(this);
 
+        
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
 
         txtAlreadyM.setOnClickListener(v -> LoginClick());
