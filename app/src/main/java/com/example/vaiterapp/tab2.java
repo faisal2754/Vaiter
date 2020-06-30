@@ -74,7 +74,7 @@ public class tab2 extends Fragment {
                             mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
-                }, 1000);
+                }, 500);
             }
         });
 

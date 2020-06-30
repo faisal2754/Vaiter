@@ -68,7 +68,7 @@ public class StaffTab1 extends Fragment {
                             mSwipeRefreshLayout.setRefreshing(false);
                         }
                     }
-                }, 1000);
+                }, 500);
             }
         });
 
