@@ -50,6 +50,7 @@ public class CustomerMainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
+        viewPager.setOffscreenPageLimit(3);
 
 
 

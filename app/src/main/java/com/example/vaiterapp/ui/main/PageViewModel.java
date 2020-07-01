@@ -1,5 +1,7 @@
 package com.example.vaiterapp.ui.main;
 
+import android.graphics.pdf.PdfDocument;
+
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
