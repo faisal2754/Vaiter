@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -38,6 +39,7 @@ public class StaffSignupActivity extends AppCompatActivity {
     public TextView txtAlreadyM;
 
     private ProgressDialog loadingBar;
+    private TextView errorText;
 
     private ImageView iTwitter;
     private ImageView iInstagram;
@@ -54,10 +56,14 @@ public class StaffSignupActivity extends AppCompatActivity {
         eEmail = findViewById(R.id.staffSEmail);
         ePass = findViewById(R.id.staffSPass);
         eCpass = findViewById(R.id.staffSPassC);
+        sRes = findViewById(R.id.staffRes);
 
         btnSignup = findViewById(R.id.btnStaffSignUp);
 
         loadingBar = new ProgressDialog(this);
+
+
+
 
 
         txtAlreadyM = findViewById(R.id.textAlreadyMember);
@@ -140,6 +146,7 @@ public class StaffSignupActivity extends AppCompatActivity {
         String res = sRes.getSelectedItem().toString();
         String pass = ePass.getText().toString().trim();
         String cpass = eCpass.getText().toString().trim();
+        String restaurant = sRes.getSelectedItem().toString();
 
         if (fname.isEmpty()){
             eFname.setError("Please enter a first name");
@@ -164,6 +171,11 @@ public class StaffSignupActivity extends AppCompatActivity {
         if (pass.isEmpty()){
             ePass.setError("Please enter a password");
             ePass.requestFocus();
+            return;
+        }
+        if (restaurant.equals("Select your restaurant")){
+            ((TextView)sRes.getSelectedView()).setError("Error message");
+            sRes.requestFocus();
             return;
         }
         if (pass.length() < 6){
