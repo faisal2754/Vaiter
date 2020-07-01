@@ -15,7 +15,7 @@ public class VerificationDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setIcon(R.drawable.logo);
         builder.setTitle("Email Verification")
-                .setMessage("A verification email has been sent to your email address. Please verify your email address by clicking on the link in the email.")
+                .setMessage("A verification email has been sent to your email address. Please verify your email address by clicking on the link in the email. Please check both inbox and spam for email.")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
